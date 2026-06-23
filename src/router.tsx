@@ -1,20 +1,30 @@
 import { createRouter as createTanStackRouter } from "@tanstack/react-router";
 import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query";
+import { createIsomorphicFn } from "@tanstack/react-start";
 import { getContext } from "./integrations/tanstack-query/root-provider";
-import { deLocalizeUrl, localizeUrl } from "./paraglide/runtime";
+// import server-only helper. Vinxi strips this entirely on the browser build.
+import { getServerLocale } from "./locale.server";
+import {
+	deLocalizeUrl,
+	getLocale as getClientLocale,
+	localizeUrl,
+} from "./paraglide/runtime";
 import { routeTree } from "./routeTree.gen";
 
 export function getRouter() {
 	const context = getContext();
-	let locale = "en";
+	// This isomorphic switch runs completely synchronously on both sides
+	const getDeterministicLocale = createIsomorphicFn()
+		.server(() => {
+			return getServerLocale();
+		})
+		.client(() => {
+			return getClientLocale();
+		});
 
-	if (window === undefined) {
-		// During SSR, the router is created before React hydration. In this case, we can directly set the locale on the document element.
-		const req = getWebRequest()
-	}
 	const router = createTanStackRouter({
 		routeTree,
-		context,
+		context: { ...context, locale: getDeterministicLocale() },
 		scrollRestoration: true,
 		defaultPreload: "intent",
 		defaultPreloadStaleTime: 0,

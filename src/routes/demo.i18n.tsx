@@ -9,7 +9,6 @@ export const Route = createFileRoute("/demo/i18n")({
 });
 
 function App() {
-	console.log("SSR locale:", getLocale());
 	return (
 		<main className="demo-page demo-center text-center">
 			<section className="demo-panel flex w-full max-w-2xl flex-col items-center gap-4">

@@ -34,11 +34,7 @@ const config = defineConfig({
 			// ],
 		}),
 		tailwindcss(),
-		tanstackStart({
-			server: {
-				entry: "./src/server.ts",
-			},
-		}),
+		tanstackStart(),
 		viteReact(),
 	],
 });

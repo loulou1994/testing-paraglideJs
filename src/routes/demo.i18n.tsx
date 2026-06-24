@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { m } from "#/paraglide/messages";
-import { getLocale } from "#/paraglide/runtime";
 import LocaleSwitcher from "../components/LocaleSwitcher";
 import logo from "../logo.svg";
 

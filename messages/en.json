@@ -48,17 +48,19 @@
     "perDay": "/d"
   },
 
-  "cars": {
+  "fleet": {
     "title": "My Fleet — Luxora Fleet OS",
     "description": "Manage every car in your rental fleet — status, pricing, calendar.",
     "titlePage": "My Fleet",
     "subtitle": "{total} cars · {active} available",
     "addNew": "Add new car",
+    "status": "status",
     "searchPlaceholder": "Search by plate or model…",
     "allStatuses": "All statuses",
     "active": "Active",
     "inactive": "Inactive",
     "maintenance": "Maintenance",
+    "service": "service",
     "allServices": "All services",
     "rent": "Rent",
     "transfer": "VIP Transfer",

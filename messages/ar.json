@@ -48,17 +48,19 @@
     "perDay": "/يوم"
   },
   
-  "cars": {
+  "fleet": {
     "title": "Luxora Fleet OS - أسطولي",
     "description": "إطلع على السيارات المحجوزة في أسطولك - الحالة و السعر و الرزنامة",
     "titlePage": "أسطولي",
-    "subtitle": "{{total}} سيارة · {{active}} متاحة",
+    "subtitle": "{total} سيارة · {active} متاحة",
     "addNew": "إضافة سيارة جديدة",
+    "status": "الحالة",
     "searchPlaceholder": "البحث برقم اللوحة أو الموديل…",
     "allStatuses": "جميع الحالات",
     "active": "نشطة",
     "inactive": "غير نشطة",
     "maintenance": "صيانة",
+    "service": "خدمة",
     "allServices": "جميع الخدمات",
     "rent": "إيجار",
     "transfer": "توصيل VIP",
@@ -68,7 +70,7 @@
     "calendar": "التقويم",
     "edit": "تعديل",
     "archive": "أرشفة",
-    "archivedToast": "تم أرشفة {{model}}",
+    "archivedToast": "تم أرشفة {model}",
     "noCars": "لا توجد سيارات تطابق الفلتر.",
     "back": "العودة للأسطول",
     "seats": "مقاعد",
@@ -90,8 +92,8 @@
     "Petrol": "بنزين",
     "Diesel": "ديزل",
     "availableNow": "متاحة الآن",
-    "bookedUntil": "محجوزة حتى {{date}}",
-    "nextBooking": "التالي: {{start}} ← {{end}}"
+    "bookedUntil": "محجوزة حتى {date}",
+    "nextBooking": "التالي: {start} ← {end}"
   },
 
   "home_page": "Home page",

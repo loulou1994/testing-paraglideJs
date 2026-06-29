@@ -48,17 +48,19 @@
     "perDay": "/j"
   },
 
-  "cars": {
+  "fleet": {
     "title": "Ma flotte - Luxora Fleet OS",
     "description": "Gérer chaque voiture dans votre réservoir de flotte - état, prix, calendrier",
     "titlePage": "Ma flotte",
     "subtitle": "{total} voitures · {active} disponibles",
     "addNew": "Ajouter une voiture",
+    "status": "état",
     "searchPlaceholder": "Rechercher par plaque ou modèle…",
     "allStatuses": "Tous les statuts",
     "active": "Active",
     "inactive": "Inactive",
     "maintenance": "Maintenance",
+    "service": "service",
     "allServices": "Tous les services",
     "rent": "Location",
     "transfer": "Transfert VIP",

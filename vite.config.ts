@@ -15,23 +15,6 @@ const config = defineConfig({
 			project: "./project.inlang",
 			outdir: "./src/paraglide",
 			strategy: ["cookie", "url", "preferredLanguage", "baseLocale"],
-			// urlPatterns: [
-			// 	// dedicated root pattern avoids a redirect loop on "/"
-			// 	{
-			// 		pattern: "/",
-			// 		localized: [
-			// 			["de", "/de"],
-			// 			["en", "/"],
-			// 		],
-			// 	},
-			// 	{
-			// 		pattern: "/:path(.*)?",
-			// 		localized: [
-			// 			["de", "/de/:path(.*)?"], // specific/prefixed first
-			// 			["en", "/:path(.*)?"], // catch-all fallback last
-			// 		],
-			// 	},
-			// ],
 		}),
 		tailwindcss(),
 		tanstackStart(),

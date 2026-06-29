@@ -1,5 +1,6 @@
 import { getRequestHeaders } from "@tanstack/react-start/server";
 
+// parses current cookie locale (if any) onto the server-side
 export function getServerLocale() {
 	const headers = getRequestHeaders();
 	const cookies = headers.get("cookie") || "";

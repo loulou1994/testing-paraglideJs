@@ -29,7 +29,7 @@ function RouteComponent() {
 						asChild
 						className="bg-primary text-primary-foreground hover:bg-primary/90"
 					>
-						<Link to="/cars">
+						<Link to="/dashboard/fleet">
 							{m["home.manageFleet"]()}{" "}
 							<ArrowUpRight className="ms-1 h-4 w-4" />
 						</Link>

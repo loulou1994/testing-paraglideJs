@@ -31,8 +31,8 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
 const main = [
-	{ titleKey: "sidebar.dashboard", url: "/", icon: LayoutDashboard },
-	{ titleKey: "sidebar.fleet", url: "/cars", icon: Car },
+	{ titleKey: "sidebar.dashboard", url: "/dashboard", icon: LayoutDashboard },
+	{ titleKey: "sidebar.fleet", url: "/dashboard/fleet", icon: Car },
 	{ titleKey: "sidebar.orders", url: "/orders", icon: ClipboardList },
 	{ titleKey: "sidebar.revenue", url: "/revenue", icon: DollarSign },
 ] as const;

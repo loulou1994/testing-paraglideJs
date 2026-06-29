@@ -17,9 +17,10 @@ import { Route as DemoTanstackQueryRouteImport } from './routes/demo/tanstack-qu
 import { Route as DemoTableRouteImport } from './routes/demo/table'
 import { Route as DemoStoreRouteImport } from './routes/demo/store'
 import { Route as DemoI18nRouteImport } from './routes/demo.i18n'
-import { Route as DashboardFleetRouteImport } from './routes/dashboard/fleet'
+import { Route as DashboardFleetIndexRouteImport } from './routes/dashboard.fleet/index'
 import { Route as DemoFormSimpleRouteImport } from './routes/demo/form.simple'
 import { Route as DemoFormAddressRouteImport } from './routes/demo/form.address'
+import { Route as DashboardFleetCarCaridRouteImport } from './routes/dashboard.fleet/car.$carid'
 
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
@@ -61,9 +62,9 @@ const DemoI18nRoute = DemoI18nRouteImport.update({
   path: '/demo/i18n',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardFleetRoute = DashboardFleetRouteImport.update({
-  id: '/fleet',
-  path: '/fleet',
+const DashboardFleetIndexRoute = DashboardFleetIndexRouteImport.update({
+  id: '/fleet/',
+  path: '/fleet/',
   getParentRoute: () => DashboardRoute,
 } as any)
 const DemoFormSimpleRoute = DemoFormSimpleRouteImport.update({
@@ -76,12 +77,16 @@ const DemoFormAddressRoute = DemoFormAddressRouteImport.update({
   path: '/demo/form/address',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardFleetCarCaridRoute = DashboardFleetCarCaridRouteImport.update({
+  id: '/fleet/car/$carid',
+  path: '/fleet/car/$carid',
+  getParentRoute: () => DashboardRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/dashboard': typeof DashboardRouteWithChildren
-  '/dashboard/fleet': typeof DashboardFleetRoute
   '/demo/i18n': typeof DemoI18nRoute
   '/demo/store': typeof DemoStoreRoute
   '/demo/table': typeof DemoTableRoute
@@ -89,11 +94,12 @@ export interface FileRoutesByFullPath {
   '/dashboard/': typeof DashboardIndexRoute
   '/demo/form/address': typeof DemoFormAddressRoute
   '/demo/form/simple': typeof DemoFormSimpleRoute
+  '/dashboard/fleet/': typeof DashboardFleetIndexRoute
+  '/dashboard/fleet/car/$carid': typeof DashboardFleetCarCaridRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/dashboard/fleet': typeof DashboardFleetRoute
   '/demo/i18n': typeof DemoI18nRoute
   '/demo/store': typeof DemoStoreRoute
   '/demo/table': typeof DemoTableRoute
@@ -101,13 +107,14 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardIndexRoute
   '/demo/form/address': typeof DemoFormAddressRoute
   '/demo/form/simple': typeof DemoFormSimpleRoute
+  '/dashboard/fleet': typeof DashboardFleetIndexRoute
+  '/dashboard/fleet/car/$carid': typeof DashboardFleetCarCaridRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/dashboard': typeof DashboardRouteWithChildren
-  '/dashboard/fleet': typeof DashboardFleetRoute
   '/demo/i18n': typeof DemoI18nRoute
   '/demo/store': typeof DemoStoreRoute
   '/demo/table': typeof DemoTableRoute
@@ -115,6 +122,8 @@ export interface FileRoutesById {
   '/dashboard/': typeof DashboardIndexRoute
   '/demo/form/address': typeof DemoFormAddressRoute
   '/demo/form/simple': typeof DemoFormSimpleRoute
+  '/dashboard/fleet/': typeof DashboardFleetIndexRoute
+  '/dashboard/fleet/car/$carid': typeof DashboardFleetCarCaridRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -122,7 +131,6 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/dashboard'
-    | '/dashboard/fleet'
     | '/demo/i18n'
     | '/demo/store'
     | '/demo/table'
@@ -130,11 +138,12 @@ export interface FileRouteTypes {
     | '/dashboard/'
     | '/demo/form/address'
     | '/demo/form/simple'
+    | '/dashboard/fleet/'
+    | '/dashboard/fleet/car/$carid'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/dashboard/fleet'
     | '/demo/i18n'
     | '/demo/store'
     | '/demo/table'
@@ -142,12 +151,13 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/demo/form/address'
     | '/demo/form/simple'
+    | '/dashboard/fleet'
+    | '/dashboard/fleet/car/$carid'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/dashboard'
-    | '/dashboard/fleet'
     | '/demo/i18n'
     | '/demo/store'
     | '/demo/table'
@@ -155,6 +165,8 @@ export interface FileRouteTypes {
     | '/dashboard/'
     | '/demo/form/address'
     | '/demo/form/simple'
+    | '/dashboard/fleet/'
+    | '/dashboard/fleet/car/$carid'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -227,11 +239,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoI18nRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/dashboard/fleet': {
-      id: '/dashboard/fleet'
+    '/dashboard/fleet/': {
+      id: '/dashboard/fleet/'
       path: '/fleet'
-      fullPath: '/dashboard/fleet'
-      preLoaderRoute: typeof DashboardFleetRouteImport
+      fullPath: '/dashboard/fleet/'
+      preLoaderRoute: typeof DashboardFleetIndexRouteImport
       parentRoute: typeof DashboardRoute
     }
     '/demo/form/simple': {
@@ -248,17 +260,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoFormAddressRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/fleet/car/$carid': {
+      id: '/dashboard/fleet/car/$carid'
+      path: '/fleet/car/$carid'
+      fullPath: '/dashboard/fleet/car/$carid'
+      preLoaderRoute: typeof DashboardFleetCarCaridRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
 
 interface DashboardRouteChildren {
-  DashboardFleetRoute: typeof DashboardFleetRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardFleetIndexRoute: typeof DashboardFleetIndexRoute
+  DashboardFleetCarCaridRoute: typeof DashboardFleetCarCaridRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
-  DashboardFleetRoute: DashboardFleetRoute,
   DashboardIndexRoute: DashboardIndexRoute,
+  DashboardFleetIndexRoute: DashboardFleetIndexRoute,
+  DashboardFleetCarCaridRoute: DashboardFleetCarCaridRoute,
 }
 
 const DashboardRouteWithChildren = DashboardRoute._addFileChildren(

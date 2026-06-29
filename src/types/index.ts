@@ -73,6 +73,6 @@ export interface Car {
   eventRate?: number;
   seats: number;
   transmission: "Auto" | "Manual";
-  fuel: string;
+  fuel: "Petrol" | "Diesel" | "Hybrid" | "Electric";
   features: string[];
 }

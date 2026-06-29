@@ -1,22 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Plus } from "lucide-react";
 import { useState } from "react";
-import { CarsFilters } from "#/components/cars/cars-filters";
-import { FilteredCars } from "#/components/cars/filtered-cars";
 import { DashboardHeader } from "#/components/dashboard-header";
+import { CarsFilters } from "#/components/fleet/cars-filters";
+import { FilteredCars } from "#/components/fleet/filtered-cars";
 import { Button } from "#/components/ui/button";
 import { cars } from "#/lib/mock-data";
 import { m } from "#/paraglide/messages";
 import type { CarStatus, ServiceType } from "#/types";
 
-export const Route = createFileRoute("/dashboard/fleet")({
+export const Route = createFileRoute("/dashboard/fleet/")({
 	component: RouteComponent,
-	head: () => ({
-		meta: [
-			{ title: m["fleet.title"]() },
-			{ name: "description", content: m["fleet.description"]() },
-		],
-	}),
 });
 
 function RouteComponent() {

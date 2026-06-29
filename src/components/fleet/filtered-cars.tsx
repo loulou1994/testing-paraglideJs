@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { CalendarDays, Pencil, Trash2 } from "lucide-react";
+import { useMemo } from "react";
 import { toast } from "sonner";
 import { bookings } from "#/lib/mock-data";
 import { m } from "#/paraglide/messages";
@@ -35,16 +36,18 @@ export function FilteredCars({
 	cars: Car[];
 	status: CarStatus | "all";
 }) {
-	const filtered = cars.filter((c) => {
-		const matchQ =
-			!name ||
-			`${c.make} ${c.model} ${c.plate}`
-				.toLowerCase()
-				.includes(name.toLowerCase());
-		const matchS = status === "all" || c.status === status;
-		const matchT = type === "all" || c.services.includes(type);
-		return matchQ && matchS && matchT;
-	});
+	const filtered = useMemo(() => {
+		return cars.filter((c) => {
+			const matchQ =
+				!name ||
+				`${c.make} ${c.model} ${c.plate}`
+					.toLowerCase()
+					.includes(name.toLowerCase());
+			const matchS = status === "all" || c.status === status;
+			const matchT = type === "all" || c.services.includes(type);
+			return matchQ && matchS && matchT;
+		});
+	}, [cars, name, type, status]);
 
 	return (
 		<div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -94,7 +97,7 @@ export function FilteredCars({
 						</div>
 						<div className="flex gap-2 pt-1">
 							<Button asChild size="sm" variant="outline" className="flex-1">
-								<Link to="/cars/$carId" params={{ carId: c.id }}>
+								<Link to="car/$carId" params={{ carId: c.id }} className="bg">
 									<CalendarDays className="me-1 h-3.5 w-3.5" />{" "}
 									{m["fleet.calendar"]()}
 								</Link>

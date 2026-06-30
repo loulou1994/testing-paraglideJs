@@ -1,22 +1,22 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { CarDetails } from "#/components/car/car-details";
-import { Button } from "#/components/ui/button";
-import { cars } from "#/lib/mock-data";
-import { m } from "#/paraglide/messages";
 import { CarSchedule } from "#/components/car/car-schedule";
+import { Button } from "#/components/ui/button";
+import { bookings, cars } from "#/lib/mock-data";
+import { m } from "#/paraglide/messages";
 
 export const Route = createFileRoute("/dashboard/fleet/car/$carid")({
 	component: RouteComponent,
 	loader: ({ params }) => {
 		const car = cars.find((c) => c.id === params.carid);
 		if (!car) throw notFound();
-		return { car };
+		return { car, bookings };
 	},
 });
 
 function RouteComponent() {
-	const { car } = Route.useLoaderData();
+	const { car, bookings } = Route.useLoaderData();
 
 	return (
 		<div className="space-y-6 p-6">
@@ -27,7 +27,7 @@ function RouteComponent() {
 			</Button>
 			<div className="grid gap-4 lg:grid-cols-[1fr_2fr]">
 				<CarDetails car={car} />
-        <CarSchedule/>
+				<CarSchedule carData={car} carBookings={bookings} />
 			</div>
 		</div>
 	);

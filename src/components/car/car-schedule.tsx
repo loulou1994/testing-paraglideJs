@@ -1,7 +1,10 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { bookingTypeLabel } from "#/lib/mock-data";
+import { cn } from "#/lib/utils";
 import { m } from "#/paraglide/messages";
 import { getLocale } from "#/paraglide/runtime";
+import type { Booking, Car, ServiceType } from "#/types";
 import { DashboardHeader } from "../dashboard-header";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
@@ -31,15 +34,64 @@ const genDaysOfWeeks = (localeString: ReturnType<typeof getLocaleString>) => {
 	});
 };
 
-export function CarSchedule() {
+const genDaysOfMonth = (currentYear: number, currentMonth: number) => {
+	const firsDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+	const daysOfCurrentMonthCount = new Date(
+		currentYear,
+		currentMonth - 1,
+		0,
+	).getDate();
+
+	const daysToSkip = Array.from({ length: firsDayOfMonth }).map((_, idx) => {
+		return { id: idx + 1, date: null };
+	});
+
+	const daysOfCurrentMonth = Array.from({
+		length: daysOfCurrentMonthCount,
+	}).map((_, idx) => {
+		return {
+			id: daysToSkip.length + 1 + idx,
+			date: new Date(currentYear, currentMonth, idx + 1),
+		};
+	});
+
+	return (daysToSkip as { id: number; date: null | Date }[]).concat(
+		daysOfCurrentMonth,
+	);
+};
+
+export function CarSchedule({
+	carBookings,
+	carData,
+}: {
+	carBookings: Booking[];
+	carData: Car;
+}) {
 	const locale = getLocaleString(getLocale());
-	const [selectedDate, setSelectedDate] = useState(new Date());
+	const [currentDate, setCurrentDate] = useState(new Date());
+	const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
+	const daysOfSelectedMonth = useMemo(() => {
+		return genDaysOfMonth(currentDate.getFullYear(), currentDate.getMonth());
+	}, [currentDate]);
+	const bookingDatesOfCar = useMemo(() => {
+		return carBookings.filter(({ carId }) => {
+			return carId === carData.id;
+		});
+	}, [carBookings, carData]);
+
+	const typeBg: Record<ServiceType, string> = {
+		rent: "bg-[color:var(--rent)]/80",
+		transfer: "bg-[color:var(--transfer)]/80",
+		wedding: "bg-[color:var(--wedding)]/80",
+		event: "bg-[color:var(--event)]/80",
+	};
 
 	return (
 		<Card className="border-border bg-card">
 			<CardContent className="p-5">
 				<DashboardHeader
-					title={selectedDate.toLocaleString(locale, {
+					title={currentDate.toLocaleString(locale, {
 						month: "long",
 						year: "numeric",
 					})}
@@ -49,10 +101,10 @@ export function CarSchedule() {
 								variant="outline"
 								size="icon"
 								onClick={() =>
-									setSelectedDate(
+									setCurrentDate(
 										new Date(
-											selectedDate.getFullYear(),
-											selectedDate.getMonth() - 1,
+											currentDate.getFullYear(),
+											currentDate.getMonth() - 1,
 											1,
 										),
 									)
@@ -63,7 +115,7 @@ export function CarSchedule() {
 							<Button
 								variant="outline"
 								size="sm"
-								onClick={() => setSelectedDate(new Date())}
+								onClick={() => setCurrentDate(new Date())}
 							>
 								{m["common.today"]()}
 							</Button>
@@ -71,10 +123,10 @@ export function CarSchedule() {
 								variant="outline"
 								size="icon"
 								onClick={() =>
-									setSelectedDate(
+									setCurrentDate(
 										new Date(
-											selectedDate.getFullYear(),
-											selectedDate.getMonth() + 1,
+											currentDate.getFullYear(),
+											currentDate.getMonth() + 1,
 											1,
 										),
 									)
@@ -92,19 +144,34 @@ export function CarSchedule() {
 						</div>
 					))}
 				</div>
-				{/* <div className="mt-1 grid grid-cols-7 gap-1">
-					{days.map((d, idx) => {
-						if (!d.date)
-							return <div key={idx} className="aspect-square rounded-md" />;
-						const booking = carBookings.find(
-							(b) => d.date! >= b.start && d.date! <= b.end,
-						);
-						const past = d.date < todayStr;
-						const isToday = d.date === todayStr;
+				<div className="mt-1 grid grid-cols-7 gap-1">
+					{daysOfSelectedMonth.map((dateData) => {
+						if (!dateData.date) {
+							return (
+								<div key={dateData.id} className="aspect-square rounded-md" />
+							);
+						}
+
+						const dateInMls = dateData.date.getTime();
+						const booking = bookingDatesOfCar.find((currentBooking) => {
+							return (
+								dateInMls >= new Date(currentBooking.start).getTime() &&
+								dateInMls <= new Date(currentBooking.end).getTime()
+							);
+						});
+
+						const past =
+							dateInMls < new Date(new Date().toDateString()).getTime();
+						const isToday =
+							dateInMls === new Date(new Date().toDateString()).getTime();
+
 						return (
 							<button
-								key={d.date}
-								onClick={() => setSelected(d.date)}
+								type="button"
+								key={dateData.id}
+								onClick={() => {
+									setSelectedDate(dateData.date);
+								}}
 								className={cn(
 									"relative aspect-square rounded-md border text-xs transition",
 									"border-border bg-secondary/40 hover:border-primary/50",
@@ -120,15 +187,15 @@ export function CarSchedule() {
 										: undefined
 								}
 							>
-								<span className="absolute start-1 top-1 font-medium">
-									{Number(d.date.slice(-2))}
+								<span className="absolute inset-s-1 top-1 font-medium">
+									{dateData.date.getDate()}
 								</span>
 							</button>
 						);
 					})}
-				</div> */}
+				</div>
 
-				{/* <div className="mt-5 flex flex-wrap gap-3 text-xs text-muted-foreground">
+				<div className="mt-5 flex flex-wrap gap-3 text-xs text-muted-foreground">
 					{(["rent", "transfer", "wedding", "event"] as ServiceType[]).map(
 						(tName) => (
 							<div key={tName} className="flex items-center gap-1.5">
@@ -139,9 +206,9 @@ export function CarSchedule() {
 					)}
 					<div className="flex items-center gap-1.5">
 						<span className="h-3 w-3 rounded-sm bg-muted" />{" "}
-						{t("fleet:blocked")}
+						{m["fleet.blocked"]()}
 					</div>
-				</div> */}
+				</div>
 			</CardContent>
 		</Card>
 	);

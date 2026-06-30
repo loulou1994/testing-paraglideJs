@@ -94,6 +94,11 @@
     "availableNow": "متاحة الآن",
     "bookedUntil": "محجوزة حتى {date}",
     "nextBooking": "التالي: {start} ← {end}"
+    
+  },
+  "validationError": {
+    "lessThanMin": "يجب أن يكون {name} الخانة على الأقل {count} رمز",
+    "moreThanMax": "يجب أن يكون {name} الخانة على الأغلب {count} رمز"
   },
 
   "home_page": "Home page",

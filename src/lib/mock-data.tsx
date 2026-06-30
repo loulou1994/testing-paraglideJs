@@ -4,14 +4,14 @@ import mercedesImg from "#/assets/images/car-mercedes.jpg";
 import rangeroverImg from "#/assets/images/car-rangerover.jpg";
 import rollsImg from "#/assets/images/car-rolls.jpg";
 import teslaImg from "#/assets/images/car-tesla.jpg";
-import type { Booking, Car } from "#/types";
+import type { Booking, Car, ServiceType } from "#/types";
 
 const d = (offset: number) => {
 	const today = new Date();
 	const x = new Date(today);
 
 	x.setDate(x.getDate() + offset);
-	return x.toISOString().slice(0, 10);
+	return x.toLocaleDateString().slice(0, 10);
 };
 
 export const bookings: Booking[] = [
@@ -259,6 +259,13 @@ export const bookings: Booking[] = [
 	},
 ];
 
+export const bookingTypeLabel: Record<ServiceType, string> = {
+	rent: "Rent",
+	transfer: "VIP Transfer",
+	wedding: "Wedding",
+	event: "Event",
+};
+
 export const cars: Car[] = [
 	{
 		id: "c1",
@@ -369,11 +376,11 @@ export const cars: Car[] = [
 ];
 
 export const revenueChart = [
-  { month: "Jan", rent: 6500, transfer: 2200, wedding: 1800, event: 900 },
-  { month: "Feb", rent: 7200, transfer: 2900, wedding: 2100, event: 1500 },
-  { month: "Mar", rent: 8400, transfer: 3300, wedding: 2700, event: 2300 },
-  { month: "Apr", rent: 9100, transfer: 3500, wedding: 3000, event: 2700 },
-  { month: "May", rent: 10500, transfer: 4100, wedding: 3500, event: 3200 },
-  { month: "Jun", rent: 11800, transfer: 4400, wedding: 4000, event: 3800 },
-  { month: "Jul", rent: 12900, transfer: 4900, wedding: 4400, event: 4200 },
+	{ month: "Jan", rent: 6500, transfer: 2200, wedding: 1800, event: 900 },
+	{ month: "Feb", rent: 7200, transfer: 2900, wedding: 2100, event: 1500 },
+	{ month: "Mar", rent: 8400, transfer: 3300, wedding: 2700, event: 2300 },
+	{ month: "Apr", rent: 9100, transfer: 3500, wedding: 3000, event: 2700 },
+	{ month: "May", rent: 10500, transfer: 4100, wedding: 3500, event: 3200 },
+	{ month: "Jun", rent: 11800, transfer: 4400, wedding: 4000, event: 3800 },
+	{ month: "Jul", rent: 12900, transfer: 4900, wedding: 4400, event: 4200 },
 ];

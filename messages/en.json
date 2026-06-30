@@ -95,6 +95,11 @@
     "bookedUntil": "Booked until {date}",
     "nextBooking": "Next: {start} → {end}"
   },
+
+  "validationError": {
+    "lessThanMin": "Field {name} must be at least {count} characters",
+    "moreThanMax": "Field {name} must be at most {count} characters"
+  },
   
   "home_page": "Home page",
   "about_page": "About page",

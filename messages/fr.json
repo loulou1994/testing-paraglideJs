@@ -93,7 +93,16 @@
     "Diesel": "Diesel",
     "availableNow": "Disponible maintenant",
     "bookedUntil": "Réservée jusqu'au {date}",
-    "nextBooking": "Suivant: {start} → {end}"
+    "nextBooking": "Suivant: {start} → {end}",
+
+    "addCar": {
+      "make": ""
+    }
+  },
+
+  "validationError": {
+    "lessThanMin": "Champ {name} doit au moins avoir {count} characters",
+    "moreThanMax": "Champ {name} doit au plus avoir {count} characters"
   },
 
   "home_page": "Startseite",

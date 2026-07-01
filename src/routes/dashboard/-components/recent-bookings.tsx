@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
+import { BookingStatusBadge, ServiceBadge } from "#/components/status-badge";
+import { Button } from "#/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "#/components/ui/card";
 import { bookings, cars } from "#/lib/mock-data";
 import { m } from "#/paraglide/messages";
-import { BookingStatusBadge, ServiceBadge } from "../status-badge";
-import { Button } from "../ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 export function RecentBookings() {
 	const recent = [...bookings]

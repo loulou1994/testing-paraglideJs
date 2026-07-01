@@ -2,12 +2,12 @@ import { Link } from "@tanstack/react-router";
 import { CalendarDays, Pencil, Trash2 } from "lucide-react";
 import { useMemo } from "react";
 import { toast } from "sonner";
+import { CarStatusBadge, ServiceBadge } from "#/components/status-badge";
+import { Button } from "#/components/ui/button";
+import { Card, CardContent } from "#/components/ui/card";
 import { bookings } from "#/lib/mock-data";
 import { m } from "#/paraglide/messages";
 import type { Car, CarStatus, ServiceType } from "#/types";
-import { CarStatusBadge, ServiceBadge } from "../status-badge";
-import { Button } from "../ui/button";
-import { Card, CardContent } from "../ui/card";
 
 function nextEvent(carId: string) {
 	const now = new Date().toISOString().slice(0, 10);

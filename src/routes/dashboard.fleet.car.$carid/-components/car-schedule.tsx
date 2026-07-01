@@ -1,13 +1,17 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
+import { DashboardHeader } from "#/components/dashboard-header";
+import { Button } from "#/components/ui/button";
+import { Card, CardContent } from "#/components/ui/card";
 import { bookingTypeLabel } from "#/lib/mock-data";
 import { cn } from "#/lib/utils";
 import { m } from "#/paraglide/messages";
 import { getLocale } from "#/paraglide/runtime";
 import type { Booking, Car, ServiceType } from "#/types";
-import { DashboardHeader } from "../dashboard-header";
-import { Button } from "../ui/button";
-import { Card, CardContent } from "../ui/card";
+
+// import { DashboardHeader } from "../dashboard-header";
+// import { Button } from "../ui/button";
+// import { Card, CardContent } from "../ui/card";
 
 const getLocaleString = (locale: string) => {
 	if (locale === "fr") {

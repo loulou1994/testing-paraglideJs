@@ -1,12 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { DashboardHeader } from "#/components/dashboard-header";
-import { GeneralData } from "#/components/home/general-data";
-import { OfferBanner } from "#/components/home/offer-banner";
-import { RecentBookings } from "#/components/home/recent-bookings";
-import { RevenueSnapshots } from "#/components/home/revenu-snapshots";
 import { Button } from "#/components/ui/button";
 import { m } from "#/paraglide/messages";
+import { GeneralData } from "./-components/general-data";
+import { OfferBanner } from "./-components/offer-banner";
+import { RecentBookings } from "./-components/recent-bookings";
+import { RevenueSnapshots } from "./-components/revenu-snapshots";
 
 export const Route = createFileRoute("/dashboard/")({
 	component: RouteComponent,

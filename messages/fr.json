@@ -94,11 +94,25 @@
     "availableNow": "Disponible maintenant",
     "bookedUntil": "Réservée jusqu'au {date}",
     "nextBooking": "Suivant: {start} → {end}",
-
-    "addCar": {
-      "make": ""
-    }
-  },
+    
+    "addCarForm": {
+      "brand": "marque",
+      "model": "modèle",
+      "year": "année",
+      "color": "couleur",
+      "licensePlate": "plaque de licence",
+      "vin": "numéro de châssis (optionel)",
+      "transmission": "transmission",
+      "seats": "siège",
+      "basic": "info basique",
+      "pricing": "tarification",
+      "extras": "options",
+      "availability": "disponibilté",
+      "rentalRules": "conditions de locations",
+      "images": "images",
+      "services": "services"
+      }
+    },
 
   "validationError": {
     "lessThanMin": "Champ {name} doit au moins avoir {count} characters",

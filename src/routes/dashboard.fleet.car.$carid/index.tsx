@@ -1,12 +1,12 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
-import { CarDetails } from "#/components/car/car-details";
-import { CarSchedule } from "#/components/car/car-schedule";
 import { Button } from "#/components/ui/button";
 import { bookings, cars } from "#/lib/mock-data";
 import { m } from "#/paraglide/messages";
+import { CarDetails } from "./-components/car-details";
+import { CarSchedule } from "./-components/car-schedule";
 
-export const Route = createFileRoute("/dashboard/fleet/car/$carid")({
+export const Route = createFileRoute("/dashboard/fleet/car/$carid/")({
 	component: RouteComponent,
 	loader: ({ params }) => {
 		const car = cars.find((c) => c.id === params.carid);

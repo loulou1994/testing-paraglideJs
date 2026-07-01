@@ -74,7 +74,6 @@
     "noCars": "لا توجد سيارات تطابق الفلتر.",
     "back": "العودة للأسطول",
     "seats": "مقاعد",
-    "transmission": "ناقل الحركة",
     "fuel": "الوقود",
     "features": "المميزات",
     "dailyRate": "يومي",
@@ -93,8 +92,25 @@
     "Diesel": "ديزل",
     "availableNow": "متاحة الآن",
     "bookedUntil": "محجوزة حتى {date}",
-    "nextBooking": "التالي: {start} ← {end}"
-    
+    "nextBooking": "التالي: {start} ← {end}",
+
+    "addCarForm": {
+      "brand": "الماركة (الشركة المصنعة)",
+      "model": "النوع",
+      "year": "السنة",
+      "color": "اللون",
+      "licensePlate": "رقم الرخصة",
+      "vin": "رقم تعريف المركبة (رقم الشاصي. خياري)",
+      "transmission": "ناقل الحركة (نوع القير)",
+      "seats": "مقاعد",
+      "basic": "أساسي",
+      "pricing": "التسعير",
+      "extras": "الإضافات",
+      "availability": "التوفر",
+      "rentalRules": "شروط الإيجار",
+      "images": "صور",
+      "services": "الخدمات"
+    }
   },
   "validationError": {
     "lessThanMin": "يجب أن يكون {name} الخانة على الأقل {count} رمز",

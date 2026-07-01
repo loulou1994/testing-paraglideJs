@@ -8,10 +8,10 @@ import {
 	XAxis,
 	YAxis,
 } from "recharts";
+import { Button } from "#/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "#/components/ui/card";
 import { cars, revenueChart } from "#/lib/mock-data";
 import { m } from "#/paraglide/messages";
-import { Button } from "../ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 export function RevenueSnapshots() {
 	const chartData = revenueChart.map((r) => ({

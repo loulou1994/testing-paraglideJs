@@ -2,12 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Plus } from "lucide-react";
 import { useState } from "react";
 import { DashboardHeader } from "#/components/dashboard-header";
-import { CarsFilters } from "#/components/fleet/cars-filters";
-import { FilteredCars } from "#/components/fleet/filtered-cars";
 import { Button } from "#/components/ui/button";
 import { cars } from "#/lib/mock-data";
 import { m } from "#/paraglide/messages";
 import type { CarStatus, ServiceType } from "#/types";
+import { AddCar } from "./-components/add-car";
+import { CarsFilters } from "./-components/cars-filters";
+import { FilteredCars } from "./-components/filtered-cars";
 
 export const Route = createFileRoute("/dashboard/fleet/")({
 	component: RouteComponent,
@@ -44,7 +45,8 @@ function RouteComponent() {
 				status={status}
 				setStatus={setStatus}
 			/>
-			<FilteredCars name={name} type={type} status={status} cars={cars} />
+			<FilteredCars name={name} type={type} status={status} cars={cars}/>
+			<AddCar open={open} onOpenChange={setOpen}/>
 		</div>
 	);
 }

@@ -93,7 +93,25 @@
     "Diesel": "Diesel",
     "availableNow": "Available now",
     "bookedUntil": "Booked until {date}",
-    "nextBooking": "Next: {start} → {end}"
+    "nextBooking": "Next: {start} → {end}",
+
+    "addCarForm": {
+      "brand": "brand",
+      "model": "model",
+      "year": "year",
+      "color": "color",
+      "licensePlate": "license plate",
+      "vin": "VIN (optional)",
+      "transmission": "transmission",
+      "seats": "seats",
+      "basic": "basic",
+      "pricing": "pricing",
+      "extras": "extras",
+      "availability": "availability",
+      "rentalRules": "rental rules",
+      "images": "images",
+      "services": "services"
+    }
   },
 
   "validationError": {

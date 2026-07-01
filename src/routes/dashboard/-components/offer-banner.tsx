@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import offerBannerImg from "#/assets/images/hero-car-home.jpg";
+import { Button } from "#/components/ui/button";
 import { m } from "#/paraglide/messages";
-import { Button } from "../ui/button";
 
 export function OfferBanner() {
 	return (

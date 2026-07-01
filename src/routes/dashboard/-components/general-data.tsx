@@ -5,8 +5,8 @@ import {
 	DollarSign,
 	TrendingUp,
 } from "lucide-react";
+import { Card, CardContent } from "#/components/ui/card";
 import { m } from "#/paraglide/messages";
-import { Card, CardContent } from "../ui/card";
 
 export function GeneralData() {
 	const stats = [
@@ -35,7 +35,7 @@ export function GeneralData() {
 			delta: m["home.pts"]({ count: 6 }),
 			icon: TrendingUp,
 		},
-	];	
+	];
 
 	return (
 		<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">

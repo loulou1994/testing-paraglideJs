@@ -28,3 +28,10 @@ export function FormTextField({
 		</Field>
 	);
 }
+
+export function FormSelectField({ items, labelTitle }: { items: Record<string, any>[], labelTitle: string }) {
+	<Field>
+		<FieldLabel htmlFor={labelTitle}>{labelTitle}</FieldLabel>
+		
+	</Field>
+}

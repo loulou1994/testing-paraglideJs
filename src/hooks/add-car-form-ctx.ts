@@ -1,5 +1,5 @@
 import { createFormHook, createFormHookContexts, formOptions } from "@tanstack/react-form";
-import { FormTextField } from "#/components/forms/add-car-input";
+import { FormTextField } from "#/components/forms/add-car-inputs";
 
 export const { fieldContext, useFieldContext, formContext, useFormContext } =
 	createFormHookContexts();
@@ -17,11 +17,11 @@ export const addCarFormOpts = formOptions({
   defaultValues: {
     brand: '',
     model: '',
-    year: 1900,
+    year: "",
     color: "",
     licensePlate: '',
-	vin: "",
-	transmission: "",
-	seats: 0
+    vin: "",
+    transmission: "",
+    seats: ""
   },
 })

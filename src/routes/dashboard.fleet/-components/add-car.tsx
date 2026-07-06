@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/dialog";
 import { validateAddCarForm } from "../-validations/add-car";
 import { AddCarBasicForm } from "./add-car-basic";
+import { useMediaQuery } from 'usehooks-ts'
+
 
 export function AddCar({
 	open,
@@ -27,6 +29,7 @@ export function AddCar({
 			toast.success("Form submitted successfully");
 		},
 	});
+	  const matches = useMediaQuery('(min-width: 768px)')
 
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
@@ -34,27 +37,27 @@ export function AddCar({
 				<DialogHeader>
 					<DialogTitle>{m["fleet.addNew"]()}</DialogTitle>
 				</DialogHeader>
-				<Tabs defaultValue="basic" className="w-full">
-					<TabsList className="grid w-full sm:grid-cols-7 gap-y-1 grid-cols-1 h-auto!">
-						<TabsTrigger value="basic">
+				<Tabs defaultValue="basic" className="w-full" orientation={matches ? "horizontal" : "vertical"}>
+					<TabsList className="flex-col sm:flex-row gap-y-1 w-full">
+						<TabsTrigger value="basic" className="capitalize">
 							{m["fleet.addCarForm.basic"]()}
 						</TabsTrigger>
-						<TabsTrigger value="images">
+						<TabsTrigger value="images" className="capitalize">
 							{m["fleet.addCarForm.images"]()}
 						</TabsTrigger>
-						<TabsTrigger value="services">
+						<TabsTrigger value="services" className="capitalize">
 							{m["fleet.addCarForm.services"]()}
 						</TabsTrigger>
-						<TabsTrigger value="pricing">
+						<TabsTrigger value="pricing" className="capitalize">
 							{m["fleet.addCarForm.pricing"]()}
 						</TabsTrigger>
-						<TabsTrigger value="rental">
+						<TabsTrigger value="rental" className="capitalize">
 							{m["fleet.addCarForm.rentalRules"]()}
 						</TabsTrigger>
-						<TabsTrigger value="extras">
+						<TabsTrigger value="extras" className="capitalize">
 							{m["fleet.addCarForm.extras"]()}
 						</TabsTrigger>
-						<TabsTrigger value="availability">
+						<TabsTrigger value="availability" className="capitalize">
 							{m["fleet.addCarForm.availability"]()}
 						</TabsTrigger>
 					</TabsList>

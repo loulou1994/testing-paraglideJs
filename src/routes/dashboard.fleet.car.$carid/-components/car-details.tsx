@@ -1,7 +1,7 @@
+import { ServiceBadge } from "#/components/status-badge";
+import { Card, CardContent } from "#/components/ui/card";
 import { m } from "#/paraglide/messages";
 import type { Car } from "#/types";
-import { ServiceBadge } from "../status-badge";
-import { Card, CardContent } from "../ui/card";
 
 function Stat({ label, value }: { label: string; value: string }) {
 	return (

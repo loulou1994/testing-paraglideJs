@@ -23,6 +23,76 @@ export const AddCarBasicForm = withForm({
 						/>
 					)}
 				/>
+				<form.AppField
+					name={"model"}
+					children={(field) => (
+						<field.FormTextField
+							inputId="brand"
+							placeholder={"S-Class"}
+							labelTitle={m["fleet.addCarForm.model"]()}
+						/>
+					)}
+				/>
+				<form.AppField
+					name={"year"}
+					children={(field) => (
+						<field.FormTextField
+							inputId="brand"
+							placeholder={"2024"}
+							labelTitle={m["fleet.addCarForm.year"]()}
+						/>
+					)}
+				/>
+				<form.AppField
+					name={"color"}
+					children={(field) => (
+						<field.FormTextField
+							inputId="brand"
+							placeholder={"Obsidian Black"}
+							labelTitle={m["fleet.addCarForm.color"]()}
+						/>
+					)}
+				/>
+				<form.AppField
+					name={"licensePlate"}
+					children={(field) => (
+						<field.FormTextField
+							inputId="brand"
+							placeholder={"ABC-123"}
+							labelTitle={m["fleet.addCarForm.licensePlate"]()}
+						/>
+					)}
+				/>
+				<form.AppField
+					name={"vin"}
+					children={(field) => (
+						<field.FormTextField
+							inputId="brand"
+							placeholder={"WDD2220..."}
+							labelTitle={m["fleet.addCarForm.vin"]()}
+						/>
+					)}
+				/>
+				<form.AppField
+					name={"transmission"}
+					children={(field) => (
+						<field.FormTextField
+							inputId="brand"
+							placeholder={"Mercedes-Benz"}
+							labelTitle={m["fleet.addCarForm.transmission"]()}
+						/>
+					)}
+				/>
+				<form.AppField
+					name={"seats"}
+					children={(field) => (
+						<field.FormTextField
+							inputId="brand"
+							placeholder={"5"}
+							labelTitle={m["fleet.addCarForm.seats"]()}
+						/>
+					)}
+				/>
 				{/* <form.AppForm>
 					<form.SubscribeButton label="Submit" />
 				</form.AppForm> */}

@@ -1,6 +1,15 @@
 import { useFieldContext } from "#/hooks/add-car-form-ctx";
 import { Field, FieldError, FieldLabel } from "../ui/field";
 import { Input } from "../ui/input";
+import {
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectLabel,
+	SelectTrigger,
+	SelectValue,
+} from "../ui/select";
 
 export function FormTextField({
 	labelTitle,
@@ -15,7 +24,9 @@ export function FormTextField({
 	const field = useFieldContext<string>();
 	return (
 		<Field>
-			<FieldLabel htmlFor={labelTitle}>{labelTitle}</FieldLabel>
+			<FieldLabel htmlFor={labelTitle} className="capitalize">
+				{labelTitle}
+			</FieldLabel>
 			<Input
 				id={inputId}
 				value={field.state.value}
@@ -29,9 +40,28 @@ export function FormTextField({
 	);
 }
 
-export function FormSelectField({ items, labelTitle }: { items: Record<string, any>[], labelTitle: string }) {
-	<Field>
-		<FieldLabel htmlFor={labelTitle}>{labelTitle}</FieldLabel>
-		
-	</Field>
+export function FormSelectField({
+	items,
+	labelTitle,
+}: {
+	items: { label: () => string; value: string }[];
+	labelTitle: string;
+}) {
+	return (
+		<Field>
+			<FieldLabel htmlFor={labelTitle}>{labelTitle}</FieldLabel>
+			<Select items={items}>
+				<SelectTrigger className="w-full max-w-48">
+					<SelectValue placeholder={"select transmission"}/>
+				</SelectTrigger>
+				<SelectContent>
+					{items.map((item) => (
+						<SelectItem key={item.value} value={item.value}>
+							{item.label()}
+						</SelectItem>
+					))}
+				</SelectContent>
+			</Select>
+		</Field>
+	);
 }

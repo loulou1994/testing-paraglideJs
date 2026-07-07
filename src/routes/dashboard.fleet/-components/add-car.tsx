@@ -1,4 +1,5 @@
 import { toast } from "sonner";
+import { useMediaQuery } from "usehooks-ts";
 import { Tabs, TabsList, TabsTrigger } from "#/components/ui/tabs";
 import { addCarFormOpts, useAppForm } from "#/hooks/add-car-form-ctx";
 import { m } from "#/paraglide/messages";
@@ -10,8 +11,6 @@ import {
 } from "@/components/ui/dialog";
 import { validateAddCarForm } from "../-validations/add-car";
 import { AddCarBasicForm } from "./add-car-basic";
-import { useMediaQuery } from 'usehooks-ts'
-
 
 export function AddCar({
 	open,
@@ -29,15 +28,21 @@ export function AddCar({
 			toast.success("Form submitted successfully");
 		},
 	});
-	  const matches = useMediaQuery('(min-width: 768px)')
+	const matches = useMediaQuery("(min-width: 768px)");
 
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
-			<DialogContent className="sm:max-w-5xl w-[calc(100%-2rem)] max-h-[90vh] overflow-y-auto" >
+			<DialogContent
+				className="sm:max-w-5xl w-[calc(100%-2rem)] max-h-[90vh] overflow-y-auto"
+			>
 				<DialogHeader>
 					<DialogTitle>{m["fleet.addNew"]()}</DialogTitle>
 				</DialogHeader>
-				<Tabs defaultValue="basic" className="w-full" orientation={matches ? "horizontal" : "vertical"}>
+				<Tabs
+					defaultValue="basic"
+					className="w-full"
+					orientation={matches ? "horizontal" : "vertical"}
+				>
 					<TabsList className="flex-col sm:flex-row gap-y-1 w-full">
 						<TabsTrigger value="basic" className="capitalize">
 							{m["fleet.addCarForm.basic"]()}

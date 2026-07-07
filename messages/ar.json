@@ -96,25 +96,35 @@
 
     "addCarForm": {
       "brand": "الماركة (الشركة المصنعة)",
+      "brandPlaceholder": "ميرسيدس بينز",
       "model": "النوع",
+      "modelPlaceholder": "S-Class",
       "year": "السنة",
+      "yearPlaceholder": "2024",
       "color": "اللون",
+      "colorPlaceholder": "أزرق فاتح",
       "licensePlate": "رقم الرخصة",
+      "licensePlatePlaceholder": "ABC-123",
       "vin": "رقم تعريف المركبة (رقم الشاصي. خياري)",
+      "vinPlatePlaceholder": "WDD2220...",
       "transmission": "ناقل الحركة (نوع القير)",
+      "transmissionPlaceholder": "اختر ناقل الحركة",
       "seats": "مقاعد",
+      "seatsPlaceholder": "5",
       "basic": "أساسي",
       "pricing": "التسعير",
       "extras": "الإضافات",
       "availability": "التوفر",
       "rentalRules": "شروط الإيجار",
       "images": "صور",
-      "services": "الخدمات"
+      "services": "الخدمات",
+      "submitBtn": "حفظ ونشر"
     }
   },
   "validationError": {
-    "lessThanMin": "يجب أن يكون {name} الخانة على الأقل {count} رمز",
-    "moreThanMax": "يجب أن يكون {name} الخانة على الأغلب {count} رمز"
+    "lessThanMin": "يجب أن يكون {name} على الأقل {count}",
+    "moreThanMax": "يجب أن يكون {name} على الأغلب {count}",
+    "chooseValue": "إختر إحدى القيم المتوفرة"
   },
 
   "home_page": "Home page",

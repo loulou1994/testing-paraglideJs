@@ -15,7 +15,7 @@
   },
     "common": {
     "save": "Save changes",
-    "cancel": "Cancel",
+    "cancel": "cancel",
     "close": "Close",
     "loading": "Loading...",
     "today": "Today"
@@ -97,26 +97,36 @@
 
     "addCarForm": {
       "brand": "brand",
+      "brandPlaceholder": "Mercedes-Benz",
       "model": "model",
+      "modelPlaceholder": "S-Class",
       "year": "year",
+      "yearPlaceholder": "2024",
       "color": "color",
+      "colorPlaceholder": "Sky Blue",
       "licensePlate": "license plate",
+      "licensePlatePlaceholder": "ABC-123",
       "vin": "VIN (optional)",
+      "vinPlatePlaceholder": "WDD2220...",
       "transmission": "transmission",
+      "transmissionPlaceholder": "Select transmission",
       "seats": "seats",
+      "seatsPlaceholder": "5",
       "basic": "basic",
       "pricing": "pricing",
       "extras": "extras",
       "availability": "availability",
       "rentalRules": "rental rules",
       "images": "images",
-      "services": "services"
+      "services": "services",
+      "submitBtn": "save & publish"
     }
   },
 
   "validationError": {
     "lessThanMin": "Field {name} must be at least {count} characters",
-    "moreThanMax": "Field {name} must be at most {count} characters"
+    "moreThanMax": "Field {name} must be at most {count} characters",
+    "chooseValue": "Pick one of the suggested values"
   },
   
   "home_page": "Home page",

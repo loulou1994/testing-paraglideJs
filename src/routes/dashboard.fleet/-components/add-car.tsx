@@ -1,15 +1,18 @@
 import { toast } from "sonner";
 import { useMediaQuery } from "usehooks-ts";
+import { Button } from "#/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "#/components/ui/tabs";
-import { addCarFormOpts, useAppForm } from "#/hooks/add-car-form-ctx";
+import { addCarFormOpts, useAppForm } from "#/contexts/add-car-form-ctx";
 import { m } from "#/paraglide/messages";
 import {
 	Dialog,
+	DialogClose,
 	DialogContent,
+	DialogFooter,
 	DialogHeader,
 	DialogTitle,
 } from "@/components/ui/dialog";
-import { validateAddCarForm } from "../-validations/add-car";
+import { addCarFormSchema } from "../-validations/add-car";
 import { AddCarBasicForm } from "./add-car-basic";
 
 export function AddCar({
@@ -22,7 +25,7 @@ export function AddCar({
 	const form = useAppForm({
 		...addCarFormOpts,
 		validators: {
-			onSubmit: validateAddCarForm,
+			onChange: addCarFormSchema,
 		},
 		onSubmit: async () => {
 			toast.success("Form submitted successfully");
@@ -32,9 +35,7 @@ export function AddCar({
 
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
-			<DialogContent
-				className="sm:max-w-5xl w-[calc(100%-2rem)] max-h-[90vh] overflow-y-auto"
-			>
+			<DialogContent className="sm:max-w-5xl w-[calc(100%-2rem)] max-h-[90vh] overflow-y-auto">
 				<DialogHeader>
 					<DialogTitle>{m["fleet.addNew"]()}</DialogTitle>
 				</DialogHeader>
@@ -69,18 +70,28 @@ export function AddCar({
 					<form
 						onSubmit={(e) => {
 							e.preventDefault();
+							e.stopPropagation();
+							console.log("triggered!!!");
 							form.handleSubmit();
 						}}
 					>
 						<AddCarBasicForm form={form} />
+						<DialogFooter className="mt-4">
+							<DialogClose asChild>
+								<Button variant="outline" className="capitalize">
+									{m["common.cancel"]()}
+								</Button>
+							</DialogClose>
+							<form.AppForm>
+								<Button
+									className="bg-primary text-primary-foreground hover:bg-primary/90 capitalize"
+									type="submit"
+								>
+									{m["fleet.addCarForm.submitBtn"]()}
+								</Button>
+							</form.AppForm>
+						</DialogFooter>
 					</form>
-					{/* <form
-						onSubmit={(e) => {
-							e.preventDefault();
-							form.handleSubmit();
-						}}
-
-					></form> */}
 				</Tabs>
 			</DialogContent>
 		</Dialog>

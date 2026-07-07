@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { Plus } from "lucide-react";
 import { useState } from "react";
 import { DashboardHeader } from "#/components/dashboard-header";
@@ -11,6 +11,17 @@ import { CarsFilters } from "./-components/cars-filters";
 import { FilteredCars } from "./-components/filtered-cars";
 
 export const Route = createFileRoute("/dashboard/fleet/")({
+	beforeLoad: ({ context, location }) => {
+		if (!context.auth?.isAuthenticated) {
+			throw redirect({
+				to: "/",
+				search: {
+					// Save current location for redirect after login
+					redirect: location.href,
+				},
+			});
+		}
+	},
 	component: RouteComponent,
 });
 
@@ -45,8 +56,8 @@ function RouteComponent() {
 				status={status}
 				setStatus={setStatus}
 			/>
-			<FilteredCars name={name} type={type} status={status} cars={cars}/>
-			<AddCar open={open} onOpenChange={setOpen}/>
+			<FilteredCars name={name} type={type} status={status} cars={cars} />
+			<AddCar open={open} onOpenChange={setOpen} />
 		</div>
 	);
 }

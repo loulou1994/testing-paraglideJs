@@ -15,7 +15,7 @@
   },
   "common": {
     "save": "Enregistrer les modifications",
-    "cancel": "Annuler",
+    "cancel": "annuler",
     "close": "Fermer",
     "loading": "Chargement...",
     "today": "Aujourd'hui"
@@ -97,26 +97,36 @@
     
     "addCarForm": {
       "brand": "marque",
+      "brandPlaceholder": "Mercedes-Benz",
       "model": "modèle",
+      "modelPlaceholder": "S-Class",
       "year": "année",
+      "yearPlaceholder": "2024",
       "color": "couleur",
+      "colorPlaceholder": "Bleu Ciel",
       "licensePlate": "plaque de licence",
+      "licensePlatePlaceholder": "ABC-123",
       "vin": "numéro de châssis (optionel)",
+      "vinPlatePlaceholder": "WDD2220...",
       "transmission": "transmission",
+      "transmissionPlaceholder": "Choisir le type de boîte",
       "seats": "siège",
+      "seatsPlaceholder": "5",
       "basic": "info basique",
       "pricing": "tarification",
       "extras": "options",
       "availability": "disponibilté",
       "rentalRules": "conditions de locations",
       "images": "images",
-      "services": "services"
+      "services": "services",
+      "submitBtn": "Enregistrer et publier"
       }
     },
 
   "validationError": {
     "lessThanMin": "Champ {name} doit au moins avoir {count} characters",
-    "moreThanMax": "Champ {name} doit au plus avoir {count} characters"
+    "moreThanMax": "Champ {name} doit au plus avoir {count} characters",
+    "chooseValue": "Choisissez l'une des valeurs proposées"
   },
 
   "home_page": "Startseite",

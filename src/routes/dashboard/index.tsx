@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { DashboardHeader } from "#/components/dashboard-header";
 import { Button } from "#/components/ui/button";
@@ -10,6 +10,17 @@ import { RevenueSnapshots } from "./-components/revenu-snapshots";
 
 export const Route = createFileRoute("/dashboard/")({
 	component: RouteComponent,
+	beforeLoad: ({ context, location }) => {
+		if (!context.auth?.isAuthenticated) {
+			throw redirect({
+				to: "/",
+				search: {
+					// Save current location for redirect after login
+					redirect: location.href,
+				},
+			});
+		}
+	},
 	head: () => ({
 		meta: [
 			{ title: m["home.title"]() },

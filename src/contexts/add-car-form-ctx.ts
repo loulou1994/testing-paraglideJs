@@ -4,9 +4,11 @@ import {
 	formOptions,
 } from "@tanstack/react-form";
 import {
+	FormNumberField,
 	FormSelectField,
 	FormTextField,
 } from "#/components/forms/add-car-inputs";
+import type { AddCarFormInputs } from "#/routes/dashboard.fleet/-validations/add-car";
 
 export const { fieldContext, useFieldContext, formContext, useFormContext } =
 	createFormHookContexts();
@@ -15,6 +17,7 @@ export const { useAppForm, withForm } = createFormHook({
 	fieldComponents: {
 		FormTextField,
 		FormSelectField,
+		FormNumberField,
 	},
 	fieldContext,
 	formComponents: {},
@@ -25,11 +28,11 @@ export const addCarFormOpts = formOptions({
 	defaultValues: {
 		brand: "",
 		model: "",
-		year: "",
+		year: 0,
 		color: "",
 		licensePlate: "",
 		vin: "",
-		transmission: "",
-		seats: "",
+		transmission: "" as "automatic" | "manual",
+		seats: 0,
 	},
-});
+} as { defaultValues: AddCarFormInputs });

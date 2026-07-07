@@ -72,7 +72,7 @@ export interface Car {
   weddingRate?: number;
   eventRate?: number;
   seats: number;
-  transmission: "Auto" | "Manual";
-  fuel: "Petrol" | "Diesel" | "Hybrid" | "Electric";
+  transmission: "auto" | "manual";
+  fuel: "petrol" | "diesel" | "hybrid" | "electric";
   features: string[];
 }

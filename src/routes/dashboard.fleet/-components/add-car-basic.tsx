@@ -1,54 +1,54 @@
 import { TabsContent } from "#/components/ui/tabs";
-import { addCarFormOpts, withForm } from "#/hooks/add-car-form-ctx";
+import { addCarFormOpts, withForm } from "#/contexts/add-car-form-ctx";
 import { m } from "#/paraglide/messages";
 
 const addCarBasicInputs = [
 	{
 		name: "brand",
 		type: "text",
-		placeholder: "Mercedes-Benz",
+		placeholder: m["fleet.addCarForm.brandPlaceholder"],
 		label: m["fleet.addCarForm.brand"],
 		items: null,
 	},
 	{
 		name: "model",
 		type: "text",
-		placeholder: "S-Class",
+		placeholder: m["fleet.addCarForm.modelPlaceholder"],
 		label: m["fleet.addCarForm.model"],
 		items: null,
 	},
 	{
 		name: "year",
-		type: "text",
-		placeholder: "2024",
+		type: "number",
+		placeholder: m["fleet.addCarForm.yearPlaceholder"],
 		label: m["fleet.addCarForm.year"],
 		items: null,
 	},
 	{
 		name: "color",
 		type: "text",
-		placeholder: "Obsidian Black",
+		placeholder: m["fleet.addCarForm.colorPlaceholder"],
 		label: m["fleet.addCarForm.color"],
 		items: null,
 	},
 	{
 		name: "licensePlate",
 		type: "text",
-		placeholder: "ABC-123",
+		placeholder: m["fleet.addCarForm.licensePlatePlaceholder"],
 		label: m["fleet.addCarForm.licensePlate"],
 		items: null,
 	},
 	{
 		name: "vin",
 		type: "text",
-		placeholder: "WDD2220...",
+		placeholder: m["fleet.addCarForm.vinPlatePlaceholder"],
 		label: m["fleet.addCarForm.vin"],
 		items: null,
 	},
 	{
 		name: "transmission",
 		type: "select",
-		placeholder: "Mercedes-Benz",
+		placeholder: m["fleet.addCarForm.transmissionPlaceholder"],
 		label: m["fleet.addCarForm.transmission"],
 		items: [
 			{ label: m["fleet.auto"], value: "auto" },
@@ -58,7 +58,7 @@ const addCarBasicInputs = [
 	{
 		name: "seats",
 		type: "number",
-		placeholder: "5",
+		placeholder: m["fleet.addCarForm.seatsPlaceholder"],
 		label: m["fleet.addCarForm.seats"],
 		items: null,
 	},
@@ -80,118 +80,54 @@ export const AddCarBasicForm = withForm({
 						return (
 							<form.AppField
 								name={name}
+								key={name}
 								children={(field) => (
 									<field.FormSelectField
 										key={name}
 										labelTitle={label()}
 										items={
-											items as unknown as {label: () => string, value: string}[]
+											items as unknown as {
+												label: () => string;
+												value: string;
+											}[]
 										}
+										placeholder={placeholder}
 									/>
 								)}
 							/>
 						);
-					} else if (type === "text" || type === "number") {
+					} else if (type === "number") {
 						return (
 							<form.AppField
 								name={name}
+								key={name}
+								children={(field) => (
+									<field.FormNumberField
+										key={name}
+										// inputId={name}
+										placeholder={placeholder}
+										labelTitle={label()}
+									/>
+								)}
+							/>
+						);
+					} else {
+						return (
+							<form.AppField
+								name={name}
+								key={name}
 								children={(field) => (
 									<field.FormTextField
 										key={name}
-										inputId={name}
-										placeholder={placeholder || ""}
+										// inputId={name}
+										placeholder={placeholder}
 										labelTitle={label()}
 									/>
 								)}
 							/>
 						);
 					}
-
-					return <></>
 				})}
-				{/* <form.AppField
-					name={"brand"}
-					children={(field) => (
-						<field.FormTextField
-							inputId="brand"
-							placeholder={"Mercedes-Benz"}
-							labelTitle={m["fleet.addCarForm.brand"]()}
-						/>
-					)}
-				/> */}
-				{/* <form.AppField
-					name={"model"}
-					children={(field) => (
-						<field.FormTextField
-							inputId="brand"
-							placeholder={"S-Class"}
-							labelTitle={m["fleet.addCarForm.model"]()}
-						/>
-					)}
-				/>
-				<form.AppField
-					name={"year"}
-					children={(field) => (
-						<field.FormTextField
-							inputId="brand"
-							placeholder={"2024"}
-							labelTitle={m["fleet.addCarForm.year"]()}
-						/>
-					)}
-				/>
-				<form.AppField
-					name={"color"}
-					children={(field) => (
-						<field.FormTextField
-							inputId="brand"
-							placeholder={"Obsidian Black"}
-							labelTitle={m["fleet.addCarForm.color"]()}
-						/>
-					)}
-				/>
-				<form.AppField
-					name={"licensePlate"}
-					children={(field) => (
-						<field.FormTextField
-							inputId="brand"
-							placeholder={"ABC-123"}
-							labelTitle={m["fleet.addCarForm.licensePlate"]()}
-						/>
-					)}
-				/>
-				<form.AppField
-					name={"vin"}
-					children={(field) => (
-						<field.FormTextField
-							inputId="brand"
-							placeholder={"WDD2220..."}
-							labelTitle={m["fleet.addCarForm.vin"]()}
-						/>
-					)}
-				/>
-				<form.AppField
-					name={"transmission"}
-					children={(field) => (
-						<field.FormTextField
-							inputId="brand"
-							placeholder={"Mercedes-Benz"}
-							labelTitle={m["fleet.addCarForm.transmission"]()}
-						/>
-					)}
-				/>
-				<form.AppField
-					name={"seats"}
-					children={(field) => (
-						<field.FormTextField
-							inputId="brand"
-							placeholder={"5"}
-							labelTitle={m["fleet.addCarForm.seats"]()}
-						/>
-					)}
-				/> */}
-				{/* <form.AppForm>
-					<form.SubscribeButton label="Submit" />
-				</form.AppForm> */}
 			</TabsContent>
 		);
 	},

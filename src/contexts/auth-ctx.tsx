@@ -1,37 +1,48 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
-type Credentials = {
+type UserAuth = {
 	email: string;
-	password: string;
 	mfa_token: string;
 };
 
 export type AuthState = {
+	isLoading: boolean;
+	user: UserAuth | null;
 	isAuthenticated: boolean;
-	user: Record<string, unknown> | null;
-	login: (credentials: Credentials) => boolean;
-	logout: () => void;
+	setUser: (userAuth: UserAuth) => void;
+	setIsLoading: (loading: boolean) => void;
+	setIsAuthenticated: (isAuthenticated: boolean) => void;
+	// login: () => void;
 };
 
 const AuthContext = createContext<AuthState | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-	const [credentials, setCredentials] = useState<Credentials | null>(null);
-	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
-
-	const login = () => {
-		return false;
-	};
-	const logout = () => {
-		return false;
-	};
+	const [user, setUser] = useState<UserAuth | null>(null);
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
 	return (
 		<AuthContext.Provider
-			value={{ isAuthenticated, user: credentials, login, logout }}
+			value={{
+				isLoading,
+				user,
+				setIsLoading,
+				setUser,
+				isAuthenticated,
+				setIsAuthenticated,
+			}}
 		>
 			{children}
 		</AuthContext.Provider>
 	);
+}
+
+export function useAuth() {
+	const ctx = useContext(AuthContext);
+	if (!ctx)
+		throw new Error(
+			"The useAuth hook needs to be within an AuthProvider component",
+		);
+	return ctx;
 }

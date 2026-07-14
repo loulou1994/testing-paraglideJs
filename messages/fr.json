@@ -20,7 +20,13 @@
     "loading": "Chargement...",
     "today": "Aujourd'hui"
   },
-  
+    "login": {
+    "email": "Email",
+    "emailPlaceholder": "entrez email",
+    "password": "Mot de passe",
+    "passwordPlaceholder": "entrez mot de passe",
+    "login": "Se Connecter"
+  },
   "home": {
     "title": "Table de Bord — Luxora Fleet OS",
     "description": "Aperçu des performances de votre flotte, des réservations et des revenus",
@@ -124,9 +130,11 @@
     },
 
   "validationError": {
-    "lessThanMin": "Champ {name} doit au moins avoir {count} characters",
-    "moreThanMax": "Champ {name} doit au plus avoir {count} characters",
-    "chooseValue": "Choisissez l'une des valeurs proposées"
+    "invalidEmail": "l'adresse émail doit être correcte",
+    "fieldRequired": "ce champ est obligatoire",
+    "lessThanMin": "champ {name} doit au moins avoir {count} characters",
+    "moreThanMax": "champ {name} doit au plus avoir {count} characters",
+    "chooseValue": "choisissez l'une des valeurs proposées"
   },
 
   "home_page": "Startseite",

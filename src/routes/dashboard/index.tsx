@@ -1,6 +1,6 @@
-import { createFileRoute, Link, redirect } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import { DashboardHeader } from "#/components/dashboard-header";
+import { DashboardHeader } from "#/components/layouts/dashboard";
 import { Button } from "#/components/ui/button";
 import { m } from "#/paraglide/messages";
 import { GeneralData } from "./-components/general-data";

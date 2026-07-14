@@ -20,7 +20,13 @@
     "loading": "جاري التحميل...",
     "today": "اليوم"
   },
-
+  "login": {
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "أدخل البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "أدخل كلمة المرور",
+    "login": "تسجيل الدخول"
+  },
   "home": {
     "title": "Luxora Fleet OS — لوحة القيادة",
     "description": "نظرة عامة على أداء أسطولك، والحجوزات، والإيرادات.",
@@ -121,7 +127,10 @@
       "submitBtn": "حفظ ونشر"
     }
   },
+
   "validationError": {
+    "invalidEmail": "يجب أن يكون نمط البريد الإلكنروني صحيح",
+    "fieldRequired": "هذا الحقل ضروري",
     "lessThanMin": "يجب أن يكون {name} على الأقل {count}",
     "moreThanMax": "يجب أن يكون {name} على الأغلب {count}",
     "chooseValue": "إختر إحدى القيم المتوفرة"

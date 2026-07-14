@@ -10,6 +10,7 @@ import {
 	Settings,
 	Users,
 } from "lucide-react";
+import type { ReactNode } from "react";
 import { m } from "#/paraglide/messages";
 import { getLocale } from "#/paraglide/runtime";
 import {
@@ -18,13 +19,12 @@ import {
 	SidebarGroup,
 	SidebarGroupContent,
 	SidebarGroupLabel,
-	SidebarHeader,
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
 	SidebarTrigger,
-	useSidebar,
 } from "@/components/ui/sidebar";
+import { BrandHeaderSidebar } from "../brand-header";
 import ParaglideLocaleSwitcher from "../LocaleSwitcher";
 import ThemeToggle from "../ThemeToggle";
 import { Button } from "../ui/button";
@@ -43,11 +43,34 @@ const secondary = [
 	{ titleKey: "sidebar.settings", url: "/settings", icon: Settings },
 ] as const;
 
+export function DashboardHeader({
+	title,
+	subtitle,
+	actions,
+}: {
+	title: string;
+	subtitle?: string;
+	actions?: ReactNode;
+}) {
+	return (
+		<div className="flex flex-wrap items-end justify-between gap-4 border-b border-border pb-6">
+			<div>
+				<h1 className="text-2xl font-semibold tracking-tight md:text-3xl capitalize">
+					{title}
+				</h1>
+				{subtitle && (
+					<p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>
+				)}
+			</div>
+			{actions && (
+				<div className="flex flex-wrap items-center gap-2">{actions}</div>
+			)}
+		</div>
+	);
+}
+
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
-	const { state } = useSidebar();
-	const collapsed = state === "collapsed";
-
 	const pathname = useRouterState({ select: (s) => s.location.pathname });
 	const isActive = (url: string) => {
 		return url === pathname;
@@ -63,23 +86,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
 				collapsible="icon"
 				side={getLocale() === "ar" ? "right" : "left"}
 			>
-				<SidebarHeader className="border-b border-sidebar-border">
-					<Link to="/" className="flex items-center gap-2 px-2 py-3">
-						<div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-primary-foreground font-bold">
-							L
-						</div>
-						{!collapsed && (
-							<div className="leading-tight">
-								<div className="font-semibold text-sidebar-foreground">
-									Luxora
-								</div>
-								<div className="text-[10px] uppercase tracking-widest text-muted-foreground">
-									Fleet OS
-								</div>
-							</div>
-						)}
-					</Link>
-				</SidebarHeader>
+				<BrandHeaderSidebar />
 				<SidebarContent>
 					<SidebarGroup>
 						<SidebarGroupLabel>{m["sidebar.operations"]()}</SidebarGroupLabel>
@@ -152,10 +159,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
 						</div>
 					</div>
 				</header>
-				<main className="flex-1">
-
-					{children}
-				</main>
+				<main className="flex-1">{children}</main>
 			</div>
 		</div>
 	);

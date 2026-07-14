@@ -1,7 +1,7 @@
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { Plus } from "lucide-react";
 import { useState } from "react";
-import { DashboardHeader } from "#/components/dashboard-header";
+import { DashboardHeader } from "#/components/layouts/dashboard";
 import { Button } from "#/components/ui/button";
 import { cars } from "#/lib/mock-data";
 import { m } from "#/paraglide/messages";

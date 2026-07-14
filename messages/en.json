@@ -20,7 +20,13 @@
     "loading": "Loading...",
     "today": "Today"
   },
-
+    "login": {
+    "email": "Email",
+    "emailPlaceholder": "enter email",
+    "password": "Password",
+    "passwordPlaceholder": "enter password",
+    "login": "login"
+  },
   "home": {
     "title": "Dashboard — Luxora Fleet OS",
     "description": "Overview of your fleet performance, bookings and revenue",
@@ -124,9 +130,11 @@
   },
 
   "validationError": {
-    "lessThanMin": "Field {name} must be at least {count} characters",
-    "moreThanMax": "Field {name} must be at most {count} characters",
-    "chooseValue": "Pick one of the suggested values"
+    "invalidEmail": "email address should be valid",
+    "fieldRequired": "this field is required",
+    "lessThanMin": "field {name} must be at least {count} characters",
+    "moreThanMax": "field {name} must be at most {count} characters",
+    "chooseValue": "pick one of the suggested values"
   },
   
   "home_page": "Home page",

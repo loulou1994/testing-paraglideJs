@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
-import { DashboardHeader } from "#/components/dashboard-header";
+import { DashboardHeader } from "#/components/layouts/dashboard";
+// import { DashboardHeader } from "#/components/dashboard-header";
 import { Button } from "#/components/ui/button";
 import { Card, CardContent } from "#/components/ui/card";
 import { bookingTypeLabel } from "#/lib/mock-data";

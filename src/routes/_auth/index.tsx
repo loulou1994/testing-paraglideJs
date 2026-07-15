@@ -32,7 +32,7 @@ function RouteComponent() {
 	
 	return (
 		<div
-			className="flex flex-col gap-y-8 lg:gap-y-0 lg:flex-row lg:justify-evenly"
+			className="flex flex-col gap-y-8 lg:gap-y-0 lg:flex-row relative pt-6 lg:pt-12 lg:pr-[clamp(20px,3vw,48px)]"
 			dir={matches ? "rtl" : currentLocale === "ar" ? "rtl" : "ltr"}
 		>
 			<AuthLoginForm />

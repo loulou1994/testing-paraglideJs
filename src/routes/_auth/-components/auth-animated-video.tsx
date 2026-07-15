@@ -11,7 +11,7 @@ export function AuthAnimatedVideo() {
 					autoPlay
 					playsInline
 					muted
-					className="absolute w-[755px] left-0 top-32"
+					className="absolute w-[calc(0.5rem+50vw)] left-0 bottom-[-4vw]"
 				>
 					<source src={video} type="video/webm" />
 				</video>

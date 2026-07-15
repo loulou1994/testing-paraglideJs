@@ -25,7 +25,9 @@
     "emailPlaceholder": "enter email",
     "password": "Password",
     "passwordPlaceholder": "enter password",
-    "login": "login"
+    "login": "login",
+    "heading": "put your rental activity on autopilot",
+    "subheading": "track your fleet, adjust your rates and maximize your revenue, all from a high-performance dashboard"
   },
   "home": {
     "title": "Dashboard — Luxora Fleet OS",

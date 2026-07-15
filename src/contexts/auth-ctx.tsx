@@ -21,7 +21,7 @@ const authData = createStore<AuthData>({
 	isLoading: true,
 	user: null,
 	isAuthenticated: false,
-})
+});
 
 const AuthContext = createContext<AuthData | undefined>(undefined);
 

@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/card";
 import {
 	Field,
-	FieldDescription,
 	FieldError,
 	FieldGroup,
 	FieldLabel,
@@ -31,14 +30,13 @@ export function AuthLoginForm() {
 	});
 
 	return (
-		<Card className="bg-transparent border-0 items-center lg:items-stretch lg:gap-y-5 shadow-none py-0">
-			<CardHeader className="gap-y-0 text-center lg:text-start lg:px-0">
-				<CardTitle className="text-2xl sm:text-3xl lg:text-[clamp(1.875rem,2.3vw,2rem)] capitalize">
-					<h1>Put your rental business on autopilot</h1>
+		<Card className="bg-transparent border-0 items-center lg:items-stretch shadow-none py-0 lg:gap-y-7">
+			<CardHeader className="gap-y-3 items-center lg:items-start lg:px-0 text-center lg:text-start">
+				<CardTitle className="text-2xl sm:text-3xl  capitalize lg:text-[clamp(3.125rem,4.7vw,4.25rem)] lg:font-extrabold lg:leading-none w-76.75 lg:w-[min(46.6875rem,60.1vw)]">
+					<h1>{m["login.heading"]()}</h1>
 				</CardTitle>
-				<CardDescription className="text-lg sm:text-xl lg:text-[clamp(1.25rem,1.7vw,1.5rem)]">
-					Track your fleet, adjust pricing, and maximize your earnings all from
-					one high-powered dashboard.
+				<CardDescription className="text-lg sm:text-xl lg:text-[clamp(1.25rem,1.7vw,1.5rem)] w-81.75 sm:w-118.75 lg:w-[min(45.5rem,61.35vw)]">
+					{m["login.subheading"]()}
 				</CardDescription>
 			</CardHeader>
 			<CardContent className="w-90 max-w-md lg:w-auto lg:px-0">

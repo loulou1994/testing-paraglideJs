@@ -13,6 +13,7 @@ export function AuthContextSyncWithRouter() {
 				context: {
 					...router.options.context,
 					auth,
+					
 				},
 			});
 			router.invalidate();

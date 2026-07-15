@@ -25,7 +25,9 @@
     "emailPlaceholder": "entrez email",
     "password": "Mot de passe",
     "passwordPlaceholder": "entrez mot de passe",
-    "login": "Se Connecter"
+    "login": "Se Connecter",
+    "heading": "Mettez votre activité de location sur autopilote",
+    "subheading": "Suivez votre flotte, ajustez vos tarifs et maximisez vos revenus, le tout depuis un tableau de bord ultra-performant"
   },
   "home": {
     "title": "Table de Bord — Luxora Fleet OS",

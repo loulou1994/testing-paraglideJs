@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { getLocale } from "#/paraglide/runtime";
 import { AuthAnimatedVideo } from "./-components/auth-animated-video";
@@ -20,15 +19,8 @@ export const Route = createFileRoute("/_auth/")({
 });
 
 function RouteComponent() {
-	const [isMounted, setIsMounted] = useState(false);
 	const currentLocale = getLocale();
 	const matches = useMediaQuery("(min-width: 1024px)");
-
-	useEffect(() => {
-		setIsMounted(true);
-	}, []);
-
-	if (!isMounted) return null;
 	
 	return (
 		<div

@@ -20,12 +20,12 @@ export function BrandHeader({ collapsed }: { collapsed?: boolean }) {
 }
 
 export function BrandHeaderSidebar() {
-	const { state } = useSidebar();
-	const collapsed = state === "collapsed";
+	// const { state } = useSidebar();
+	// const collapsed = state === "collapsed";
 
 	return (
 		<SidebarHeader className="border-b border-sidebar-border">
-			<BrandHeader collapsed={collapsed} />
+			<BrandHeader collapsed={true} />
 		</SidebarHeader>
 	);
 }

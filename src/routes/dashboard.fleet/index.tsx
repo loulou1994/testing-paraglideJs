@@ -3,6 +3,7 @@ import { Plus } from "lucide-react";
 import { useState } from "react";
 import { DashboardHeader } from "#/components/layouts/dashboard";
 import { Button } from "#/components/ui/button";
+import { redirectToAuthRoute } from "#/lib/auth-redirect";
 import { cars } from "#/lib/mock-data";
 import { m } from "#/paraglide/messages";
 import type { CarStatus, ServiceType } from "#/types";
@@ -11,17 +12,9 @@ import { CarsFilters } from "./-components/cars-filters";
 import { FilteredCars } from "./-components/filtered-cars";
 
 export const Route = createFileRoute("/dashboard/fleet/")({
-	// beforeLoad: ({ context, location }) => {
-	// 	if (!context.auth?.isAuthenticated) {
-	// 		throw redirect({
-	// 			to: "/",
-	// 			search: {
-	// 				// Save current location for redirect after login
-	// 				redirect: location.href,
-	// 			},
-	// 		});
-	// 	}
-	// },
+	beforeLoad: ({ context, location }) => {
+		redirectToAuthRoute(context, location.href);
+	},
 	component: RouteComponent,
 });
 

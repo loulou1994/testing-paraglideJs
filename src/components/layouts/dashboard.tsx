@@ -69,7 +69,6 @@ export function DashboardHeader({
 	);
 }
 
-
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
 	const pathname = useRouterState({ select: (s) => s.location.pathname });
 	const isActive = (url: string) => {

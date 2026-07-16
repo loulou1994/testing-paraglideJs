@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { DashboardHeader } from "#/components/layouts/dashboard";
 import { Button } from "#/components/ui/button";
+import { redirectToAuthRoute } from "#/lib/auth-redirect";
 import { m } from "#/paraglide/messages";
 import { GeneralData } from "./-components/general-data";
 import { OfferBanner } from "./-components/offer-banner";
@@ -10,17 +11,9 @@ import { RevenueSnapshots } from "./-components/revenu-snapshots";
 
 export const Route = createFileRoute("/dashboard/")({
 	component: RouteComponent,
-	// beforeLoad: ({ context, location }) => {
-	// 	if (!context.auth?.isAuthenticated) {
-	// 		throw redirect({
-	// 			to: "/",
-	// 			search: {
-	// 				// Save current location for redirect after login
-	// 				redirect: location.href,
-	// 			},
-	// 		});
-	// 	}
-	// },
+	beforeLoad: ({ context, location }) => {
+		redirectToAuthRoute(context, location.href);
+	},
 	head: () => ({
 		meta: [
 			{ title: m["home.title"]() },

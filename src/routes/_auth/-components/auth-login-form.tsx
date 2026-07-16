@@ -1,4 +1,5 @@
 import { useForm } from "@tanstack/react-form";
+import { useLogin } from "#/apis/use-login-api";
 import { Button } from "#/components/ui/button";
 import { Input } from "#/components/ui/input";
 import { m } from "#/paraglide/messages";
@@ -19,6 +20,7 @@ import {
 import { loginSchema } from "../-validations/login";
 
 export function AuthLoginForm() {
+	const { mutate, isPending } = useLogin();
 	const form = useForm({
 		defaultValues: {
 			email: "",
@@ -26,6 +28,10 @@ export function AuthLoginForm() {
 		},
 		validators: {
 			onSubmit: loginSchema,
+		},
+		onSubmit: ({ value }) => {
+			const parsedSchema = loginSchema.parse(value);
+			mutate(parsedSchema);
 		},
 	});
 
@@ -114,6 +120,7 @@ export function AuthLoginForm() {
 						type="submit"
 						form="login-form"
 						className="w-full h-auto py-3 md:text-base"
+						disabled={isPending}
 					>
 						{m["login.login"]()}
 					</Button>

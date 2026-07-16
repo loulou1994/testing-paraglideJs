@@ -8,3 +8,5 @@ export const loginSchema = z.object({
 		.trim()
 		.min(1, { message: m["validationError.fieldRequired"]() }),
 });
+
+export type LoginPayload = z.infer<typeof loginSchema>;

@@ -24,7 +24,7 @@ export function getRouter() {
 
 	const router = createTanStackRouter({
 		routeTree,
-		context: { ...context, locale: getDeterministicLocale(), auth: undefined },
+		context: { ...context, locale: getDeterministicLocale() },
 		scrollRestoration: true,
 		defaultPreload: "intent",
 		defaultPreloadStaleTime: 0,

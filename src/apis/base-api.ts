@@ -25,6 +25,7 @@ const getRequestInit = (reqData: ApiQuery | ApiMutation): RequestInit => {
 			headers: {
 				"Content-Type": "application/json",
 			},
+			credentials: "include"
 		};
 	}
 
@@ -59,8 +60,8 @@ export async function baseApi<Output>(
 		// auth access token may be expired, try refreshing token
 		return "requesting token refresh" as any;
 	}
-	
+
 	const data = await response.json();
 
-	return data
+	return data;
 }

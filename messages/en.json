@@ -14,20 +14,26 @@
     "growth": "Growth"
   },
     "common": {
-    "save": "Save changes",
-    "cancel": "cancel",
-    "close": "Close",
-    "loading": "Loading...",
-    "today": "Today"
+      "save": "Save changes",
+      "cancel": "cancel",
+      "close": "Close",
+      "loading": "Loading...",
+      "today": "Today"
   },
     "login": {
-    "email": "Email",
-    "emailPlaceholder": "enter email",
-    "password": "Password",
-    "passwordPlaceholder": "enter password",
-    "login": "login",
-    "heading": "put your rental activity on autopilot",
-    "subheading": "track your fleet, adjust your rates and maximize your revenue, all from a high-performance dashboard"
+      "email": "Email",
+      "emailPlaceholder": "enter email",
+      "password": "Password",
+      "passwordPlaceholder": "enter password",
+      "login": "login",
+      "heading": "put your rental activity on autopilot",
+      "subheading": "track your fleet, adjust your rates and maximize your revenue, all from a high-performance dashboard",
+      "features_1_title": "An Automated Dynamic Pricing rules",
+      "feature_1_description": "Automated pricing, higher margins—zero manual hassle",
+      "features_2_title": "Visibility over every vehicle in your fleet",
+      "feature_2_description": "Complete operational control from anywhere",
+      "features_3_title": "Protected assets & faster customer handoffs",
+      "feature_3_description": "Speed up turnarounds with bulletproof liability protection"
   },
   "home": {
     "title": "Dashboard — Luxora Fleet OS",

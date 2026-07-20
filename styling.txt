@@ -1,0 +1,9 @@
+1024 layout:
+	grid-container:
+		width: 650px;
+		column-gap: 0px;
+		left: clamp(20px, 3vw, 48px);
+		grid-template-rows: repeat(3, 191px);
+	
+	grid-items:
+		width: 216px

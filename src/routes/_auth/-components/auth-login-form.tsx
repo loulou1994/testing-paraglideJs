@@ -73,7 +73,7 @@ export function AuthLoginForm() {
 											aria-invalid={isInvalid}
 											placeholder={m["login.emailPlaceholder"]()}
 											autoComplete="off"
-											className="py-3 h-auto md:text-base"
+											className="py-3 h-auto md:text-base lg:w-[min(calc(50px+23.55vw),448px)]!"
 										/>
 										{isInvalid && (
 											<FieldError errors={field.state.meta.errors} />
@@ -102,7 +102,7 @@ export function AuthLoginForm() {
 											aria-invalid={isInvalid}
 											placeholder={m["login.passwordPlaceholder"]()}
 											autoComplete="off"
-											className="py-3 h-auto md:text-base"
+											className="py-3 h-auto md:text-base lg:w-[min(calc(50px+23.55vw),448px)]!"
 										/>
 										{isInvalid && (
 											<FieldError errors={field.state.meta.errors} />
@@ -119,7 +119,7 @@ export function AuthLoginForm() {
 					<Button
 						type="submit"
 						form="login-form"
-						className="w-full h-auto py-3 md:text-base"
+						className="w-full h-auto py-3 md:text-base lg:w-[min(calc(50px+23.55vw),448px)]!"
 						disabled={isPending}
 					>
 						{m["login.login"]()}

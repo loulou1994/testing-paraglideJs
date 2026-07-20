@@ -5,7 +5,6 @@ import { AuthAnimatedVideo } from "./-components/auth-animated-video";
 import { AuthLoginForm } from "./-components/auth-login-form";
 
 export const Route = createFileRoute("/_auth/")({
-	ssr: false,
 	validateSearch: (search) => ({
 		redirect: (search.redirect as string) || "/dashboard",
 	}),

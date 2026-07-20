@@ -8,9 +8,9 @@ import ThemeToggle from "../ThemeToggle";
 function AuthHeader() {
 	return (
 		<header className="flex items-center justify-center gap-x-4 py-3">
-			{/* <ThemeToggle />
+			<ThemeToggle />
 			<BrandHeader />
-			<ParaglideLocaleSwitcher /> */}
+			<ParaglideLocaleSwitcher />
 		</header>
 	);
 }
@@ -18,7 +18,7 @@ function AuthHeader() {
 export function AuthLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<>
-			{/* <AuthHeader /> */}
+			<AuthHeader />
 			<main>{children}</main>
 		</>
 	);

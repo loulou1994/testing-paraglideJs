@@ -57,7 +57,6 @@ export default function ThemeToggle() {
 	}, [mode]);
 
 	function toggleMode() {
-		console.log("used toggle mode!!:")
 		const nextMode: ThemeMode =
 			mode === "light" ? "dark" : mode === "dark" ? "auto" : "light";
 		setMode(nextMode);

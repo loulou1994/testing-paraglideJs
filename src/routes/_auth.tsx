@@ -6,9 +6,9 @@ export const Route = createFileRoute("/_auth")({
 });
 
 function RouteComponent() {
-	// return <AuthLayout>
-	// 	<Outlet />
-	// 	</AuthLayout>;
-
-	return <Outlet />;
+	return (
+		<AuthLayout>
+			<Outlet />
+		</AuthLayout>
+	);
 }

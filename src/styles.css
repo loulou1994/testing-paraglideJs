@@ -2,8 +2,13 @@
 @import "tw-animate-css";
 @source "../src";
 
-@custom-variant dark (&:is(.dark *));
+@property --angle {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0deg;
+}
 
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -45,6 +50,23 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* used in auth layout for the landing page cards */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0%;
+    }
+
+    100% {
+      opacity: 100%
+    }
+  }
+
+  /* used in auth layout for the landing page cards */
+  @keyframes revolve {
+    from {--angle: 0deg;}
+    to {--angle: 360deg;}
+  }
 }
 
 :root {
@@ -133,5 +155,14 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* used in auth layout for the landing page cards */
+  .orbit {
+    --amplitude: 1.875rem;
+    --x: calc(cos(var(--angle)) * var(--amplitude));
+    --y: calc(sin(var(--angle)) * var(--amplitude));
+    translate: var(--x) var(--y);
+    animation: fadeIn 1s ease-in-out 0s forwards, revolve 12s linear infinite;
   }
 }

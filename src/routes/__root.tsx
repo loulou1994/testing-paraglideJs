@@ -69,7 +69,7 @@ function RootDocument() {
 				<DirectionProvider dir={locale === "ar" ? "rtl" : "ltr"}>
 						<Outlet />
 				</DirectionProvider>
-				<Footer />
+				{/* <Footer /> */}
 				<TanStackDevtools
 					config={{
 						position: "bottom-right",

@@ -7,3 +7,10 @@
 	
 	grid-items:
 		width: 216px
+
+1366 layout:
+	grid-container:
+		    width: 815px;
+			column-gap: 0px;
+			left: clamp(20px, 3vw, 48px);
+			grid-template-rows: repeat(3, 225px);

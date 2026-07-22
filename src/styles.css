@@ -159,10 +159,10 @@
 
   /* used in auth layout for the landing page cards */
   .orbit {
-    --amplitude: 1.875rem;
+    --amplitude: 1rem;
     --x: calc(cos(var(--angle)) * var(--amplitude));
     --y: calc(sin(var(--angle)) * var(--amplitude));
-    translate: var(--x) var(--y);
-    animation: fadeIn 1s ease-in-out 0s forwards, revolve 12s linear infinite;
+    translate: calc(var(--x) * var(--direction)) calc(var(--y) * var(--direction));
+    animation: fadeIn 1s ease-in-out var(--opacity-delay) forwards, revolve 12s linear var(--orbit-delay) infinite;
   }
 }

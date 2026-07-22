@@ -16,20 +16,20 @@ const dashboardFeatures = [
 		title: m["login.features_1_title"](),
 		description: m["login.feature_1_description"](),
 		icon: TrendingUp,
-		styling: "[grid-area:card-one]",
+		styling: "[grid-area:card-one] [--opacity-delay:0s] [--orbit-delay:4s] [--direction:1]", // css variables used for the "fadeIn" & "revolve" animations
 	},
 	{
 		title: m["login.features_2_title"](),
 		description: m["login.feature_2_description"](),
 		icon: Eye,
-		styling: "[grid-area:card-two]",
+		styling: "[grid-area:card-two] [--opacity-delay:1.5s] [--orbit-delay:5.5s] [--direction:-1]",
 	},
 	{
 		title: m["login.features_3_title"](),
 		description: m["login.feature_3_description"](),
 		icon: Shield,
 		styling:
-			"[grid-area:card-three]",
+			"[grid-area:card-three] [--opacity-delay:3s] [--orbit-delay:7s] [--direction:1]",
 	},
 ];
 
@@ -53,14 +53,14 @@ export function AuthAnimatedVideo() {
 				</video>
 			)}
 			<div
-				className="hidden lg:absolute lg:grid lg:grid-cols-3 lg:[grid-template-areas:'card-one_._.''._card-two_.''._._card-three'] lg:gap-x-0 lg:w-162.5 lg:left-[clamp(1.25rem,3vw,3rem)] lg:grid-rows-[repeat(3,10.5rem)] xl:w-203.75 xl:gap-x-4 xl:grid-rows-[repeat(3,11.2rem)]"
+				className="hidden lg:absolute lg:grid lg:grid-cols-3 lg:[grid-template-areas:'card-one_._.''._card-two_.''._._card-three'] lg:gap-x-0 lg:w-162.5 lg:left-[clamp(1.25rem,3vw,3rem)] lg:grid-rows-[repeat(3,10.5rem)] xl:w-212.5 xl:gap-x-6 xl:grid-rows-[repeat(3,11.2rem)]"
 				dir="ltr"
 			>
 				{dashboardFeatures.map(
 					({ description, icon: Icon, title, styling }) => (
 						<Card
 							className={cn(
-								"relative orbit z-0 bg-[linear-gradient(347deg,transparent_0%,var(--background)_52%)] bg-transparent mask-linear-[linear-gradient(345deg,#0d1218_0_5rem,transparent_11rem)] backdrop-blur-xs opacity-0 before:content-normal before:inset-0 before:duration-300 before:ease-linear before:bg-background before:opacity-0 before:transition-opacity before:-z-1 hover:before:opacity-100 before:absolute before:rounded-xl",
+								"relative orbit z-0  bg-[linear-gradient(347deg,transparent_0%,var(--background)_52%)] bg-transparent mask-linear-[linear-gradient(345deg,#0d1218_0_5rem,transparent_11rem)] backdrop-blur-xs opacity-0 before:content-normal before:inset-0 before:duration-300 before:ease-linear before:bg-background before:opacity-0 before:transition-opacity before:-z-1 hover:before:opacity-100 before:absolute before:rounded-xl",
 								animateCards && styling,
 							)}
 							key={styling}

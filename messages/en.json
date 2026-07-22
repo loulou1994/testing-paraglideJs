@@ -18,7 +18,8 @@
       "cancel": "cancel",
       "close": "Close",
       "loading": "Loading...",
-      "today": "Today"
+      "today": "Today",
+      "confirm": "confirm"
   },
     "login": {
       "email": "Email",
@@ -33,7 +34,9 @@
       "features_2_title": "Visibility over every vehicle in your fleet",
       "feature_2_description": "Complete operational control from anywhere",
       "features_3_title": "Protected assets & faster customer handoffs",
-      "feature_3_description": "Speed up turnarounds with bulletproof liability protection"
+      "feature_3_description": "Speed up turnarounds with bulletproof liability protection",
+      "forgotPassword": "password forgotten?",
+      "code": "code"
   },
   "home": {
     "title": "Dashboard — Luxora Fleet OS",

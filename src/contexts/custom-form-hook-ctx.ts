@@ -3,11 +3,8 @@ import {
 	createFormHookContexts,
 	formOptions,
 } from "@tanstack/react-form";
-import {
-	FormNumberField,
-	FormSelectField,
-	FormTextField,
-} from "#/components/forms/add-car-inputs";
+import { FormNumberField, FormOTPField, FormTextField } from "#/components/forms/inputs";
+import { FormSelectField } from "#/components/forms/select";
 import type { AddCarFormInputs } from "#/routes/dashboard.fleet/-validations/add-car";
 
 export const { fieldContext, useFieldContext, formContext, useFormContext } =
@@ -15,6 +12,7 @@ export const { fieldContext, useFieldContext, formContext, useFormContext } =
 
 export const { useAppForm, withForm } = createFormHook({
 	fieldComponents: {
+		FormOTPField,
 		FormTextField,
 		FormSelectField,
 		FormNumberField,

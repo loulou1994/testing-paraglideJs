@@ -1,5 +1,5 @@
 import { TabsContent } from "#/components/ui/tabs";
-import { addCarFormOpts, withForm } from "#/contexts/add-car-form-ctx";
+import { addCarFormOpts, withForm } from "#/contexts/custom-form-hook-ctx";
 import { m } from "#/paraglide/messages";
 
 const addCarBasicInputs = [
@@ -118,7 +118,7 @@ export const AddCarBasicForm = withForm({
 								key={name}
 								children={(field) => (
 									<field.FormTextField
-										key={name}
+										// key={name}
 										// inputId={name}
 										placeholder={placeholder}
 										labelTitle={label()}

@@ -18,6 +18,7 @@ import {
 	FieldLabel,
 } from "@/components/ui/field";
 import { loginSchema } from "../-validations/login";
+import { ForgotPwd } from "./auth-forgot-pwd";
 
 export function AuthLoginForm() {
 	const { mutate, isPending } = useLogin();
@@ -113,6 +114,7 @@ export function AuthLoginForm() {
 						/>
 					</FieldGroup>
 				</form>
+				<ForgotPwd className="mt-2 text-muted-foreground cursor-pointer" dir="ltr"/>
 			</CardContent>
 			<CardFooter className="lg:w-auto w-90 max-w-md lg:px-0">
 				<Field orientation="horizontal">

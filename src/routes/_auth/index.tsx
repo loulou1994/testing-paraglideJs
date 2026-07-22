@@ -3,6 +3,7 @@ import { useMediaQuery } from "usehooks-ts";
 import { getLocale } from "#/paraglide/runtime";
 import { AuthAnimatedVideo } from "./-components/auth-animated-video";
 import { AuthLoginForm } from "./-components/auth-login-form";
+// import { ForgotPwd } from "./-components/forgot-pwd";
 
 export const Route = createFileRoute("/_auth/")({
 	validateSearch: (search) => ({

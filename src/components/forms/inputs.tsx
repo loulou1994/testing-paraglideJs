@@ -50,7 +50,7 @@ export function FormTextField({
 	placeholder,
 	type = "text",
 }: {
-	labelTitle: string;
+	labelTitle?: string;
 	placeholder: () => string;
 	type?: string;
 }) {
@@ -58,9 +58,11 @@ export function FormTextField({
 
 	return (
 		<Field>
-			<FieldLabel htmlFor={labelTitle} className="capitalize">
-				{labelTitle}
-			</FieldLabel>
+			{labelTitle && (
+				<FieldLabel htmlFor={labelTitle} className="capitalize">
+					{labelTitle}
+				</FieldLabel>
+			)}
 			<Input
 				value={field.state.value}
 				placeholder={placeholder()}

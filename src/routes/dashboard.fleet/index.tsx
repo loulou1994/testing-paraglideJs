@@ -13,7 +13,7 @@ import { FilteredCars } from "./-components/filtered-cars";
 
 export const Route = createFileRoute("/dashboard/fleet/")({
 	beforeLoad: ({ context, location }) => {
-		redirectToAuthRoute(context, location.href);
+		// redirectToAuthRoute(context, location.href);
 	},
 	component: RouteComponent,
 });

@@ -9,20 +9,22 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import video from "../../../assets/0050-0109.webm";
+import video from "../../../assets/videos/0050-0109.webm";
 
 const dashboardFeatures = [
 	{
 		title: m["login.features_1_title"](),
 		description: m["login.feature_1_description"](),
 		icon: TrendingUp,
-		styling: "[grid-area:card-one] [--opacity-delay:0s] [--orbit-delay:4s] [--direction:1]", // css variables used for the "fadeIn" & "revolve" animations
+		styling:
+			"[grid-area:card-one] [--opacity-delay:0s] [--orbit-delay:4s] [--direction:1]", // css variables used for the "fadeIn" & "revolve" animations
 	},
 	{
 		title: m["login.features_2_title"](),
 		description: m["login.feature_2_description"](),
 		icon: Eye,
-		styling: "[grid-area:card-two] [--opacity-delay:1.5s] [--orbit-delay:5.5s] [--direction:-1]",
+		styling:
+			"[grid-area:card-two] [--opacity-delay:1.5s] [--orbit-delay:5.5s] [--direction:-1]",
 	},
 	{
 		title: m["login.features_3_title"](),

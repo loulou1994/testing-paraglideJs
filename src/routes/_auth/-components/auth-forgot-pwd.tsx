@@ -1,4 +1,10 @@
-import { MoveLeft, MoveRight } from "lucide-react";
+import {
+	ArrowLeft,
+	ArrowRight,
+	MoveLeft,
+	MoveRight,
+	XIcon,
+} from "lucide-react";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { Button } from "#/components/ui/button";
@@ -22,9 +28,9 @@ import {
 } from "../-validations/forgot-pwd";
 
 function ForgotPwdStep1({
-	setResetPwdStep,
+	setResetPwdPassedStep,
 }: {
-	setResetPwdStep: (callback: (val: number) => number) => void;
+	setResetPwdPassedStep: (val: number) => void;
 }) {
 	const form = useAppForm({
 		defaultValues: {
@@ -49,7 +55,7 @@ function ForgotPwdStep1({
 					name="email"
 					children={(field) => (
 						<field.FormTextField
-							labelTitle={m["login.email"]()}
+							labelTitle={""}
 							placeholder={m["login.emailPlaceholder"]}
 						/>
 					)}
@@ -64,20 +70,45 @@ function ForgotPwdStep1({
 				e.preventDefault();
 				e.stopPropagation();
 
-				setResetPwdStep((prevVal) => prevVal + 1);
+				setResetPwdPassedStep(1);
 				form.handleSubmit();
 			}}
 		>
+			<DialogHeader>
+				<div className="flex items-center justify-between">
+					<div className="flex items-center gap-3">
+						<Button>
+							<ArrowLeft />
+						</Button>
+						<DialogTitle className="flex">{m["login.email"]()}</DialogTitle>
+					</div>
+					<Button>
+						<ArrowRight />
+					</Button>
+				</div>
+				<DialogDescription>
+					{m["login.forgotPasswordStep1desc"]()}
+				</DialogDescription>
+			</DialogHeader>
+
 			<ForgotPwdEmailInput form={form} />
-			<FormActions appForm={form.AppForm} />
+			<form.AppForm>
+				<Button
+					className="bg-primary text-primary-foreground hover:bg-primary/90 capitalize"
+					type="submit"
+				>
+					{m["common.confirm"]()}
+				</Button>
+			</form.AppForm>
+			{/* <FormActions appForm={form.AppForm} /> */}
 		</form>
 	);
 }
 
 function ForgotPwdStep2({
-	setResetPwdStep,
+	setResetPwdPassedStep,
 }: {
-	setResetPwdStep: (callback: (val: number) => number) => void;
+	setResetPwdPassedStep: (val: number) => void;
 }) {
 	const form = useAppForm({
 		defaultValues: {
@@ -112,7 +143,7 @@ function ForgotPwdStep2({
 				e.preventDefault();
 				e.stopPropagation();
 
-				setResetPwdStep((prevVal) => prevVal + 1);
+				setResetPwdPassedStep(2);
 				form.handleSubmit();
 			}}
 		>
@@ -122,9 +153,9 @@ function ForgotPwdStep2({
 	);
 }
 function ForgotPwdStep3({
-	setResetPwdStep,
+	setResetPwdPassedStep,
 }: {
-	setResetPwdStep: (callback: (val: number) => number) => void;
+	setResetPwdPassedStep: (val: number) => void;
 }) {
 	const form = useAppForm({
 		defaultValues: {
@@ -165,7 +196,7 @@ function ForgotPwdStep3({
 				e.preventDefault();
 				e.stopPropagation();
 
-				setResetPwdStep((prevVal) => prevVal + 1);
+				setResetPwdPassedStep(MAX_STEPS);
 				form.handleSubmit();
 			}}
 		>
@@ -201,6 +232,8 @@ function FormActions({
 	);
 }
 
+const MAX_STEPS = 3;
+
 export function ForgotPwd({
 	className,
 	dir,
@@ -209,61 +242,73 @@ export function ForgotPwd({
 	const [passedSteps, setPassedSteps] = useState(0);
 	const currentLocale = getLocale();
 
-	useEffect(() => {
-		passedSteps < currentStep && setPassedSteps(currentStep - 1);
-	}, [currentStep, passedSteps]);
+	const handleOnOpenChange = (open: boolean) => {
+		if (!open) setPassedSteps(0);
+	};
 
-	console.log(`current step: ${currentStep}\ntotalPasses: ${passedSteps}`);
+	useEffect(() => {
+		setCurrentStep(MAX_STEPS === passedSteps ? MAX_STEPS : passedSteps + 1);
+	}, [passedSteps]);
 
 	return (
-		<Dialog>
+		<Dialog onOpenChange={handleOnOpenChange}>
 			<DialogTrigger className={className} dir={dir}>
 				{m["login.forgotPassword"]()}
 			</DialogTrigger>
 			<DialogContent
 				dir={currentLocale === "ar" ? "rtl" : "ltr"}
-				className="gap-y-8"
+				className="w-[calc(100%-2rem)] bg-[url('/src/assets/images/forgot-pwd-bg.jpg')] bg-cover bg-no-repeat rounded-lg bg-center sm:max-w-175 sm:bg-[center_-175px] p-0"
+				showCloseButton={false}
 			>
-				<DialogHeader className="flex-row">
-					<Button
-						className="bg-transparent group p-0 h-auto"
-						variant={"link"}
-						size={"icon-xs"}
-						onClick={() => {
-							currentStep - 1 > 0 && setCurrentStep(currentStep - 1);
-						}}
-					>
-						<MoveLeft
-							className="text-muted-foreground size-5 group-hover:text-primary rtl:scale-x-[-1]"
-							strokeWidth={4}
-						/>
-					</Button>
-					<Button
-						className="bg-transparent group p-0 h-auto"
-						variant={"link"}
-						size={"icon-xs"}
-						onClick={() => {
-							currentStep + 1 <= passedSteps && setCurrentStep(currentStep + 1);
-
-							// console.log(`the next step will be ${currentStep + 1}`);
-						}}
-					>
-						<MoveRight
-							className="text-muted-foreground size-5 group-hover:text-primary rtl:scale-x-[-1]"
-							strokeWidth={4}
-						/>
-					</Button>
-				</DialogHeader>
-				<div>
-					{currentStep === 1 && (
-						<ForgotPwdStep1 setResetPwdStep={setCurrentStep} />
-					)}
-					{currentStep === 2 && (
-						<ForgotPwdStep2 setResetPwdStep={setCurrentStep} />
+				<div className="bg-[#080e14]/35 backdrop-blur-[2px] rounded-lg">
+					<DialogClose className="absolute right-4 top-4 rounded-full bg-white p-2 text-muted-foreground hover:bg-muted hover:text-foreground shadow-md">
+						<XIcon className="size-4 stroke-destructive" />
+						<span className="sr-only">Close</span>
+					</DialogClose>
+					<div className="bg-background/80 w-[80%] sm:w-[70%] rounded-lg sm:p-6 px-3 py-6">
+						{/* <DialogHeader className="flex-row">
+						<Button
+							className="bg-transparent group p-0 h-auto"
+							variant={"link"}
+							size={"icon-xs"}
+							onClick={() => {
+								currentStep - 1 > 0 && setCurrentStep(currentStep - 1);
+							}}
+						>
+							<MoveLeft
+								className="text-muted-foreground size-5 group-hover:text-primary rtl:scale-x-[-1]"
+								strokeWidth={4}
+							/>
+						</Button>
+						<Button
+							className="bg-transparent group p-0 h-auto"
+							variant={"link"}
+							size={"icon-xs"}
+							onClick={() => {
+								currentStep + 1 <= MAX_STEPS &&
+									currentStep + 1 <= passedSteps + 1 &&
+									setCurrentStep(currentStep + 1);
+							}}
+						>
+							<MoveRight
+								className="text-muted-foreground size-5 group-hover:text-primary rtl:scale-x-[-1]"
+								strokeWidth={4}
+							/>
+						</Button>
+					</DialogHeader> */}
+						{/* <div>
+							</div> */}
+						<ForgotPwdStep1 setResetPwdPassedStep={setPassedSteps} />
+						{/* {currentStep === 1 && (
+						<ForgotPwdStep1 setResetPwdPassedStep={setPassedSteps} />
+					)} */}
+						{/* {currentStep === 2 && (
+						<ForgotPwdStep2 setResetPwdPassedStep={setPassedSteps} />
 					)}
 					{currentStep === 3 && (
-						<ForgotPwdStep3 setResetPwdStep={setCurrentStep} />
-					)}
+						<ForgotPwdStep3 setResetPwdPassedStep={setPassedSteps} />
+					)} */}
+					</div>
 				</div>
 			</DialogContent>
 		</Dialog>

@@ -36,6 +36,7 @@
       "features_3_title": "Protected assets & faster customer handoffs",
       "feature_3_description": "Speed up turnarounds with bulletproof liability protection",
       "forgotPassword": "password forgotten?",
+      "forgotPasswordStep1desc": "enter your email to so we can send you an otp code",
       "code": "code"
   },
   "home": {
